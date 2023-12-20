@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>고양이 갤러리</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .main {
+        margin: auto;
+        width: 1000px;
+      }
+      .header {
+        width: 100%;
+        height: 150px;
+      }
+      nav {
+        width: 100%;
+        height: 40px;
+        border-top: 2px solid gray;
+        border-bottom: 2px solid gray;
+        line-height: 40px;
+      }
+      .body {
+        width: 70%;
+        float: left;
+      }
+      .aside {
+        float: left;
+        width: 30%;
+      }
+      .header nav ul {
+        list-style: none;
+        float: left;
+        display: inline-block;
+      }
+      .header nav ul li {
+        display: inline-block;
+      }
+      li a {
+        text-decoration: none;
+        color: gray;
+      }
+      .src {
+        margin: -5px 5px 3px 5px;
+        text-align: right;
+      }
+      .btn {
+        border: 0px;
+        background-color: white;
+      }
+      h3 {
+        margin-top: 5px;
+      }
+      p {
+        font-size: small;
+      }
+      strong {
+        display: inline-block;
+        font-size: small;
+      }
+      .aside ul {
+        font-weight: bold;
+        font-size: 1em;
+        list-style: none;
+      }
+      .aside ul li ul li {
+        font-weight: lighter;
+        padding-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="header">
+        <h2>고양이갤러리</h2>
+        <p>고양이갤러리</p>
+        <br /><br />
+        <nav>
+          <ul>
+            <li><a href="#">고양이갤러리</a></li>
+            <li><a href="#">고양이분양</a></li>
+            <li><a href="#">고양이자료</a></li>
+          </ul>
+          <div class="src">
+            <input type="text" /> <button class="btn">검색</button>
+          </div>
+        </nav>
+      </div>
+      <div class="body">
+        <h3>고양이 사진</h3>
+        <br />
+        <p>2023년 12월 19일</p>
+        <br />
+        <div class="cat1">
+          <img src="images/cat.jpg" alt="" width="300" height="150" />
+          <br /><strong>러시안블루</strong>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa quam
+            nam eveniet obcaecati neque asperiores? Asperiores inventore
+            repellat, cum ipsa in quia rerum ducimus placeat obcaecati mollitia
+            nihil ipsum quidem.
+          </p>
+        </div>
+        <div class="cat2">
+          <img src="images/cat1.jpg" alt="" width="300" height="200" />
+          <br /><strong>터키쉬앙고라</strong>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa quam
+            nam eveniet obcaecati neque asperiores? Asperiores inventore
+            repellat, cum ipsa in quia rerum ducimus placeat obcaecati mollitia
+            nihil ipsum quidem.
+          </p>
+        </div>
+        <div class="cat3">
+          <img src="images/cat3.jpg" alt="" width="300" height="200" />
+          <br /><strong>페르시안</strong>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa quam
+            nam eveniet obcaecati neque asperiores? Asperiores inventore
+            repellat, cum ipsa in quia rerum ducimus placeat obcaecati mollitia
+            nihil ipsum quidem.
+          </p>
+        </div>
+      </div>
+      <div class="aside">
+        <ul>
+          <li>
+            카테고리
+            <ul>
+              <li>고양이갤러리</li>
+              <li>고양이분양</li>
+              <li>고양이사료</li>
+              <li>경기도고양시</li>
+            </ul>
+          </li>
+          <br />
+          <li>
+            최근글
+            <ul>
+              <li>러시안블루</li>
+              <li>터키쉬앙고라</li>
+              <li>페르시안</li>
+              <li>아바시니안</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
