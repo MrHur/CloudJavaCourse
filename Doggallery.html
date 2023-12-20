@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>강아쥐 갤러리입니다</title>
+    <style>
+      body {
+        background-color: rgb(222, 218, 208);
+      }
+      .body {
+        margin: auto;
+        width: 1200px;
+      }
+      .main {
+        text-align: center;
+      }
+      .account {
+        text-align: right;
+      }
+      .account button {
+        width: 80px;
+        height: 30px;
+        border-radius: 5px;
+        background-color: rgb(187, 182, 182);
+        border: none;
+      }
+      h5 {
+        font-size: 1em;
+        font-weight: lighter;
+      }
+      .dog {
+        margin-left: 140px;
+      }
+      [class*="list"] {
+        border: 1px solid black;
+        float: left;
+        width: 200px;
+        height: 230px;
+        margin: 10px;
+      }
+      button {
+        margin-right: 5px;
+      }
+      button a{
+        display: block;
+        text-decoration: none;
+        color: black;        
+      }
+      button:hover {
+        background-color: rgb(44, 43, 43);
+      }
+      button:hover a {
+        color: white; 
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="body">
+      <div class="account">
+        <button class="btn1"><a href="login_02.html">로그인</a></button>
+        <button class="btn2"><a href="signin_02.html">회원가입</a></button>
+        <hr />
+      </div>
+      <div class="main">
+        <h1>Main Page</h1>
+        <h5>
+          안녕하세요.<br />
+          강아지르 좋아하는 사람들을 위한 홈페이지 입니다.
+        </h5>
+        <div class="dog">
+          <div class="list1">
+            <p>솜군1</p>
+            <hr />
+            <img src="images/cat.jpg" alt="고양이" width="150" height="150" />
+          </div>
+          <div class="list2">
+            <p>솜군2</p>
+            <hr />
+            <img src="images/cat.jpg" alt="야옹" width="150" height="150" />
+          </div>
+          <div class="list3">
+            <p>솜군3</p>
+            <hr />
+            <img src="images/cat.jpg" alt="cat" width="150" height="150" />
+          </div>
+          <div class="list4">
+            <p>솜군4</p>
+            <hr />
+            <img src="images/cat.jpg" alt="neko" width="150" height="150" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
