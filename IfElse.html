@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>if-else</title>
+  </head>
+  <body>
+    <h1>if-else를 이용한 학점 매기기</h1>
+    <hr />
+    <script>
+      var userScore = prompt("숫자를 입력하세요.");
+      if (userScore != null) {
+        if (userScore >= 90) {
+          document.write(userScore + "는 A 입니다.");
+        } else if (userScore >= 80 && userScore < 90) {
+          document.write(userScore + "는 B 입니다.");
+        } else if (userScore >= 70 && userScore < 80) {
+          document.write(userScore + "는 C 입니다.");
+        } else if (userScore >= 60 && userScore < 70) {
+          document.write(userScore + "는 D 입니다.");
+        } else {
+          document.write(userScore + "는 F 입니다.");
+          alert("분발하세요.");
+        }
+      } else {
+        alert("숫자를 입력해주세요");
+      }
+    </script>
+  </body>
+</html>
