@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자리 배치도</title>
+    <style>
+      table, td {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+      }
+      td {
+        padding: 5px;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>자리 배치도</h1>
+    <script>
+      var memNum;
+      var colNum;
+      var rowNum;
+      var seatNo;
+
+      var memNum = prompt("입장객은 몇 명인가요?");
+      var colNum = prompt("한 줄에 몇 명씩 앉습니까?");
+      if (memNum != null && colNum != null) {
+        if (memNum % colNum === 0) {
+          rowNum = memNum / colNum;
+        } else {
+          memNum % colNum != 0;
+          rowNum = memNum / colNum;
+          rowNum = rowNum + 1;
+        }
+        document.write(
+          "모두 " + Math.floor(rowNum) + "개의 줄이 필요합니다. <br>"
+        );
+      } else {
+        document.write("취소 되었습니다.");
+      }
+
+      document.write("<table>");
+      for (let i = 0; i < rowNum; i++) {
+        document.write("<tr>");
+        for (let j = 1; j <= colNum; j++) {
+          seatNo = i * colNum + j; //좌석번호
+          if (seatNo > memNum) break;
+          document.write("<td>좌석 " + seatNo + "</td>");
+        }
+        document.write("</tr>");  //줄 바꾸기
+      }
+      document.write("</table>");
+    </script>
+  </body>
+</html>
