@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3의 배수</title>
+  </head>
+  <body>
+    <h2>3의 배수일까 아닐까</h2>
+    <script>
+      var userNumber = prompt("숫자를 입력하시오.");
+      var count = 0;
+      if (userNumber !== null) {
+        if (userNumber !== "") {
+          for (i = 1; i < userNumber; i++) {
+            if (i % 3 === 0) {
+              document.write(i + ", ");
+              count++;
+            }
+            continue;
+          }
+          document.write(
+            "<br>" + userNumber + "까지 3의 배수의 개수 : " + count
+          );
+        } else {
+          alert("숫자를 입력해주세요.");
+        }
+      } else {
+        alert("입력이 취소됐습니다.");
+      }
+    </script>
+  </body>
+</html>
