@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gugudan</title>
+    <style>
+      div { 
+        width: 100px;
+        height: 300px;
+        border: 1px solid black;
+        line-height: 1.3em;
+        padding-left: 15px;
+      }
+      h3 { 
+        padding-left: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      var num = prompt("구구단 몇 단을 원하세요?");
+      gugudan(num);
+
+      function gugudan(n){ //n은 문자열
+        var m = parseInt(n); // 문자열 n을 숫자로 바꿈
+
+        document.write("<div>");
+        document.write("<h3>" + m + "단</h3><br>");
+        for(let i = 1; i<=9; i++){
+          document.write(i + " X " + m + " = " + m*i + "<br>");
+        }
+        document.write("</div>");
+        }    
+    </script>
+  </body>
+</html>
