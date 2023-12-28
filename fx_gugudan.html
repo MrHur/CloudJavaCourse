@@ -25,10 +25,13 @@
       function gugudan(n){ //n은 문자열
         var m = parseInt(n); // 문자열 n을 숫자로 바꿈
 
+        if(m < 1 || m > 9 || isNaN(m)){ 
+          alert("잘못 입력하셨습니다.");
+        }
         document.write("<div>");
         document.write("<h3>" + m + "단</h3><br>");
         for(let i = 1; i<=9; i++){
-          document.write(i + " X " + m + " = " + m*i + "<br>");
+          document.write(m + " X " + i + " = " + m*i + "<br>");
         }
         document.write("</div>");
         }    
