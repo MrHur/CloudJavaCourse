@@ -27,7 +27,9 @@
 
         if(m < 1 || m > 9 || isNaN(m)){ 
           alert("잘못 입력하셨습니다.");
+          return;  //return 이 없으면 alert창 다음에 구구단이 그대로 진행.
         }
+
         document.write("<div>");
         document.write("<h3>" + m + "단</h3><br>");
         for(let i = 1; i<=9; i++){
