@@ -13,13 +13,17 @@
 </head>
 <body>
   <div id="container">
-    <img src="images/cup-1.png" id="cup">		
+    <img src="images/cup-1.png" id="cup" onclick="changePic()">		
   </div>
   <script>
 		var cup = document.querySelector("#cup");  
     // id = cup인 요소를 가져옴
-    cup.onclick = function(){
-      alert("이미지를 클릭했습니다");
+    // cup.onclick = function(){
+    //   alert("이미지를 클릭했습니다");
+    // }
+
+    function changePic(){
+      cup.src = "images/cup-2.png";
     }
 	</script>
 </body>
