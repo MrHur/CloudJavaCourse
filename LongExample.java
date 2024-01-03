@@ -3,13 +3,19 @@ package sec02.exam;
 public class LongExample {
 
 	public static void main(String[] args) {
-		long var1 = 10;
-		long var2 = 20;
-		// long var3 = 10000000000;
-		long var4 = 10000000000L;
+		char c1 = 'A';			//문자를 직접 저장
+		char c2 = 65;			//십진수로 저장
+		char c3 = '\u0041';		//16진수로 저장
 
-		System.out.println(var1);
-		System.out.println(var2);
-		System.out.println(var4);
+		char c4 = '가';			//문자를 직접 저장
+		int c5 = 44032;		//십진수로 저장
+		char c6 = '\uac00';		//16진수로 저장
+
+		System.out.println(c1);
+		System.out.println(c2);
+		System.out.println(c3);
+		System.out.println(c4);
+		System.out.println(c5);
+		System.out.println(c6);
 	}
 }
