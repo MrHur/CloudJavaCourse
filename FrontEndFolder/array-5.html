@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array 객체의 메서드</title>
+</head>
+<body>
+  <p>slice 매서드 사용하기</p>
+  <script>
+    // 인수가 1개일 경우
+    var colors = ["red", "green", "blue", "white", "black"];
+    var colors2 = colors.slice(2);
+    document.write(colors2);
+    document.write("<br>");
+
+    var colors3 = colors.slice(2, 4); //인덱스 2, 3
+    document.write(colors3);
+    document.write("<br>");
+    document.write(colors);
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>구구단 퀴즈</title>
+</head>
+<body>
+  <h1>Math 를 활용한 구구단 연습</h1>
+  <hr>
+
+  <script>
+    var a = randomInt()
+    var b = randomInt()
+    var quiz = prompt(a +" * " + b + "값은 얼마입니까?", "");
+    var correct = parseInt(a * b);
+    function randomInt(){
+      return Math.floor(Math.random()*9) +1;
+    }
+    if (quiz == correct){
+      document.write("정답! " + a + " * " + b + " = " + quiz +"입니다.");
+    }else{
+      document.write("땡! " + a + " * " + b + " = " + correct +"입니다."); 
+    }
+  </script>
+</body>
+</html>
