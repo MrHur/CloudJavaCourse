@@ -34,7 +34,7 @@ public class Quiz2 {
 		System.out.println("2. 주민번호 앞 6자리: " + regis );
 		System.out.println("3. 전화번호: " + telephone );
 		
-		// scanner 닫기.
+		// scanner 닫기
 		sc.close();
 	}
 }
