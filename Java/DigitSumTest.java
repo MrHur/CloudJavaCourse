@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class DigitSumTest {
 
 	public static void main(String[] args) {
-		// 키보드로 0부터 999사이의 정수를 입력받아 각자릿수를 더한 결과를 출력.
+		// 키보드로 0부터 999사이의 정수를 입력받아 각 자릿수를 더한 결과를 출력.
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.print("0~999 사이의 숫자를 입력하세요 : ");
@@ -22,6 +22,8 @@ public class DigitSumTest {
 		
 		int sum = hund + ten + one;
 		System.out.println(sum);
+		
+		sc.close();
 	}
 
 }
