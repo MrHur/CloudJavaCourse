@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OO 서비스 로그인</title>
+  <link rel="stylesheet" href="CSS/signin_new.css">
+  <!-- 파비콘 설정 -->
+  <link rel="icon" href="images/favicon.png">
+</head>
+<body>
+  <div class="container">
+    <!-- logo -->
+    <div class="logo">
+      <div>
+        <a href="index.html"><img src="images/goorm.svg" alt="logo"></a>
+        <p>하나의 아이디로 OO 서비스를 이용하세요.</p>
+      </div>
+    </div>
+    <!-- O-auth -->
+    <div class="Oauth">
+      <p>다른 서비스로 로그인</p>
+      <div class="Oauthbox">
+        <a class="Oauth_img" href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?response_type=code&redirect_uri=https%3A%2F%2Faccounts.goorm.io%2Fauth%2Fgoogle%2Fcallback&scope=profile%20email&client_id=436607588781-idtpvo4mis7bansrgppal7v8av2n82h8.apps.googleusercontent.com&service=lso&o2v=2&theme=glif&flowName=GeneralOAuthFlow"><img src="images/google.png" alt="google_login"></a>
+        <a class="Oauth_img" href="https://accounts.kakao.com/login/?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Faccounts.goorm.io%252Fauth%252Fkakao%252Fcallback%26through_account%3Dtrue%26client_id%3Dc253380aa602250193dff3da485f23e4#login"><img src="images/kakao.png" alt="kakao_login"></a>
+        <a class="Oauth_img" href="https://nid.naver.com/oauth2.0/authorize?response_type=code&redirect_uri=http%3A%2F%2Faccounts.goorm.io%2Fauth%2Fnaver%2Fcallback&client_id=QWC6gr0qLsXoZ7Mg5PXP"><img src="images/naver.png" alt="naver_login"></a>
+        <a class="Oauth_img" href="https://github.com/login/oauth/authorize?response_type=code&redirect_uri=http%3A%2F%2Faccounts.goorm.io%2Fauth%2Fgithub%2Fcallback&scope=&client_id=9db36fd7060f908e2476"><img src="images/github.png" alt="github_login"></a>
+        <a class="Oauth_img" href="https://id.atlassian.com/login?application=bitbucket&continue=https%3A%2F%2Fbitbucket.org%2Faccount%2Fsignin%2F%3Fnext%3D%252Fsite%252Foauth2%252Fauthorize%253Fresponse_type%253Dcode%2526redirect_uri%253Dhttp%25253A%25252F%25252Faccounts.goorm.io%25252Fauth%25252Fbitbucket%25252Fcallback%2526client_id%253DNyLb8Gdecx7DFMqKgR%26redirectCount%3D1"><img src="images/bitbucket.png" alt="bitbucket_login"></a>
+        <a class="Oauth_img6" href="https://id.payco.com/oauth2.0/authorize?serviceProviderCode=FRIENDS&userLocale=ko_KR&response_type=code&redirect_uri=http%3A%2F%2Faccounts.goorm.io%2Fauth%2Fpayco%2Fcallback&state=mY596P3yl8Yw57GSkBjrPATd&client_id=3RD8piW_98RfnbCu7bDI"><img src="images/payco.png" alt="payco_login"></a>
+      </div>
+    </div>
+    <!-- and & line -->
+    <div class="contour">
+      <div class="line"></div>
+      <div class="line_text"><span>또는</span></div>
+    </div>
+    <!-- login form -->
+    <div class="login_form">
+      <form action="">
+        <fieldset>
+          <input type="email" id="emailInput" placeholder="이메일" autofocus>
+          <div class="pw-box">
+            <input type="password" id="passwordInput" placeholder="비밀번호 (영문, 숫자, 특수문자 8-30자)" maxlength="30" value>
+            <button class="pwView"><svg xmlns="http://www.w3.org/2000/svg" id="pwIcon" height="12" width="18" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c8.4-19.3 10.6-41.4 4.8-63.3c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zM373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5L373 389.9z"/></svg></button>
+          </div>
+          <div class="pw-box">
+            <input type="password" id="passwordInput" placeholder="비밀번호 확인" maxlength="30" value>
+            <button class="pwView"><svg xmlns="http://www.w3.org/2000/svg" id="pwIcon" height="12" width="18" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c8.4-19.3 10.6-41.4 4.8-63.3c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zM373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5L373 389.9z"/></svg></button>
+          </div>
+          <div class="pw-box">
+            <input type="password" id="passwordInput" placeholder="이름 (2-30자)" maxlength="30" value>
+            <button class="pwView"><svg xmlns="http://www.w3.org/2000/svg" id="pwIcon" height="12" width="18" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c8.4-19.3 10.6-41.4 4.8-63.3c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zM373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5L373 389.9z"/></svg></button>
+          </div>
+          <div class="robot">
+            <img src="images/imNotRobot.png" alt="">
+          </div>
+        </fieldset>
+      </form>
+      <div class="login_info">
+        <div class="keeploginbox"><input type="checkbox" id="keeplogin" checked><label for="keeplogin">새 기능, 이벤트 홍보, 대회 안내 등의 알림 수신<span>(선택)</label></div>
+        </div>
+      </div>
+      <!-- 수신 동의 및 회원 가입 -->
+        <div class="mailAccessInfo">
+          <span>
+            이용약관의 변경이나 관계 법령에 따라 회원님께 안내되어야 할 중요
+            고지 사항은 메일 수신 동의 여부에 상관 없이 안내될 수 있습니다.
+          </span>
+          <input type="button" id="loginBtn" value="회원가입">
+          <p>이미 계정이 있으세요? <a href="login_new.html">로그인</a></p>
+      </div>
+      <p class="underline">
+      <span>
+        회원가입 시 OO의
+        <a href="#">
+          <strong>서비스 약관</strong>
+        </a>
+        및
+        <br>
+        <a href="#">
+          <strong>개인정보 처리방침</strong>
+        </a>을 확인하였으며, 동의합니다.
+      </span>
+    </p>
+    <footer>
+
+    </footer>
+  </div>
+</body>
+</html>
