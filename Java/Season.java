@@ -25,5 +25,6 @@ public class Season {
 				System.out.println(season+"월은 겨울 입니다.");
 			break;
 		}
+		sc.close();
 	}
 }
