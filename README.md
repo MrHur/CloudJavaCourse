@@ -15,7 +15,7 @@ MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 �
 ![Static Badge](https://img.shields.io/badge/Spring-%236DB33F?style=for-the-badge&logo=Spring&logoColor=white&labelColor=white)
 ![Static Badge](https://img.shields.io/badge/MySQL-%234479A1?style=for-the-badge&logo=MySQL&logoColor=white&labelColor=white)
 ![Static Badge](https://img.shields.io/badge/Amazon%20AWS-%23232F3E?style=for-the-badge&logo=Amazon%20AWS&logoColor=white&labelColor=white)
-![Static Badge](https://img.shields.io/badge/Notion-%23000000?style=for-the-badge&logo=Notion&logoColor=%23000000&labelColor=white)
+![Static Badge](https://img.shields.io/badge/Notion-%23000000?style=for-the-badge&logo=Notion&logoColor=%23000000&labelColor=#000000)
 
 - Programming Language : Java 17
 - WEB : HTML5, CSS3, JavaScript 
