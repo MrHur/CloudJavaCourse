@@ -7,7 +7,7 @@ MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 �
 
 ### Stack
 ---
-![Static Badge](https://img.shields.io/badge/GitHub-%23181717?style=for-the-badge&logo=GitHub&logoColor=white&labelColor=white)
+![Static Badge](https://img.shields.io/badge/GitHub-%23181717?style=for-the-badge&logo=GitHub&logoColor=white&labelColor=#181717)
 ![Static Badge](https://img.shields.io/badge/HTML5-%23E34F26?style=for-the-badge&logo=HTML5&logoColor=white&labelColor=white)
 ![Static Badge](https://img.shields.io/badge/CSS3-%231572B6?style=for-the-badge&logo=CSS3&logoColor=white&labelColor=white)
 ![Static Badge](https://img.shields.io/badge/JavaScript-%23F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white&labelColor=white)
