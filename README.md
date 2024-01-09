@@ -14,8 +14,8 @@ MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 �
 ![Static Badge](https://img.shields.io/badge/Eclipse%20IDE-%232C2255?style=for-the-badge&logo=Eclipse%20IDE&logoColor=white&labelColor=#2C2255)
 ![Static Badge](https://img.shields.io/badge/Spring-%236DB33F?style=for-the-badge&logo=Spring&logoColor=white&labelColor=#6DB33F)
 ![Static Badge](https://img.shields.io/badge/MySQL-%234479A1?style=for-the-badge&logo=MySQL&logoColor=white&labelColor=#4479A1)
-![Static Badge](https://img.shields.io/badge/Amazon%20AWS-%23232F3E?style=for-the-badge&logo=Amazon%20AWS&logoColor=white&labelColor=#232F3E)
 ![Static Badge](https://img.shields.io/badge/Notion-%23000000?style=for-the-badge&logo=Notion&logoColor=white&labelColor=%23000000)
+![Static Badge](https://img.shields.io/badge/Amazon%20AWS-%23232F3E?style=for-the-badge&logo=Amazon%20AWS&logoColor=white&labelColor=#232F3E)
 
 ---
 
