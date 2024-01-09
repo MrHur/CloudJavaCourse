@@ -1,3 +1,10 @@
+## Cloud Java Web Application Developer Course
+---
+클라우드 기반의 자바 웹 어플리케이션 개발자 과정에 대한 repository 입니다.
+HTML5 / CSS3 / JavaScript 를 활용한 Front-End 개발 과정 (VSCode 사용)
+JAVA / Spring 을 사용한 Back-End 개발 과정(Eclipse 사용)
+MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 담을 예정입니다.
+
 ### Stack
 ---
 ![Static Badge](https://img.shields.io/badge/GitHub-%23181717?style=for-the-badge&logo=GitHub&logoColor=white&labelColor=%23181717)
@@ -15,3 +22,6 @@
 - DataBase : MySQL
 - Deployment : AWS
 
+### Who am I ?
+---
+BackEnd Developer Hur입니다.
