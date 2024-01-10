@@ -6,10 +6,14 @@ JAVA / Spring 을 사용한 Back-End 개발 과정(Eclipse 사용)
 MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 담을 예정입니다.
 
 ### Stack
+![Static Badge](https://img.shields.io/badge/Java-%230769AD?style=for-the-badge&logo=CoffeeScript&logoColor=white&labelColor=0769AD)
 ![Static Badge](https://img.shields.io/badge/GitHub-%23181717?style=for-the-badge&logo=GitHub&logoColor=white&labelColor=#181717)
 ![Static Badge](https://img.shields.io/badge/HTML5-%23E34F26?style=for-the-badge&logo=HTML5&logoColor=white&labelColor=#E34F26)
 ![Static Badge](https://img.shields.io/badge/CSS3-%231572B6?style=for-the-badge&logo=CSS3&logoColor=white&labelColor=#1572B6)
 ![Static Badge](https://img.shields.io/badge/JavaScript-%23F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white&labelColor=#F7DF1E)
+![Static Badge](https://img.shields.io/badge/jQuery-%230769AD?style=for-the-badge&logo=JQuery&logoColor=white&labelColor=0769AD)
+
+
 
 ![Static Badge](https://img.shields.io/badge/Eclipse%20IDE-%232C2255?style=for-the-badge&logo=Eclipse%20IDE&logoColor=white&labelColor=#2C2255)
 ![Static Badge](https://img.shields.io/badge/Spring-%236DB33F?style=for-the-badge&logo=Spring&logoColor=white&labelColor=#6DB33F)
@@ -28,4 +32,4 @@ MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 �
 
 ### Who am I ?
 ---
-BackEnd Developer Hur입니다.
+BackEnd Developer Greedy입니다.
