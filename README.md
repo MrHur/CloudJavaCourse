@@ -10,7 +10,8 @@ MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 �
 ![Static Badge](https://img.shields.io/badge/HTML5-%23E34F26?style=for-the-badge&logo=HTML5&logoColor=white&labelColor=#E34F26)
 ![Static Badge](https://img.shields.io/badge/CSS3-%231572B6?style=for-the-badge&logo=CSS3&logoColor=white&labelColor=#1572B6)
 ![Static Badge](https://img.shields.io/badge/JavaScript-%23F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white&labelColor=#F7DF1E)
-![Static Badge](https://img.shields.io/badge/jQuery-%230769AD?logo=JQuery&logoColor=white&labelColor=0769AD)
+![Static Badge](https://img.shields.io/badge/jQuery-%230769AD?style=for-the-badge&logo=JQuery&logoColor=white&labelColor=0769AD)
+
 
 
 ![Static Badge](https://img.shields.io/badge/Eclipse%20IDE-%232C2255?style=for-the-badge&logo=Eclipse%20IDE&logoColor=white&labelColor=#2C2255)
