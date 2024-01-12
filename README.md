@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=venom&color=dea8ff&height=300&section=header&text=Greedy%20render&fontSize=90&fontColor=black&text-shadow:-1px0red01pxred1px)
+![header](https://capsule-render.vercel.app/api?type=venom&color=dea8ff&height=300&section=header&text=Greedy%20render&fontSize=90&fontColor=dea8ff)
 
 ## Cloud Java Web Application Developer Course
 ---
