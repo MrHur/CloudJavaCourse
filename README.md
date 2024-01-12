@@ -1,3 +1,7 @@
+![header](https://capsule-render.vercel.app/api?type=venom&color=random&height=300&section=header&text=Greedy%20BackEnd&fontSize=90&fontColor=black&stroke=dea8ff&stroke-width=1)
+
+
+
 ## Cloud Java Web Application Developer Course
 ---
 클라우드 기반의 자바 웹 어플리케이션 개발자 과정에 대한 repository 입니다.
@@ -33,3 +37,10 @@ MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 �
 ### Who am I ?
 ---
 BackEnd Developer Greedy입니다.
+
+[![Solved.ac Profile](http://mazassumnida.wtf/api/generate_badge?boj=okstreet)](https://solved.ac/MrHur/CodingTest)<br/>
+
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=MrHur&show_icons=true&theme=dracula)
+
+
+
