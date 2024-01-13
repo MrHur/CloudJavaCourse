@@ -54,7 +54,7 @@ MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 �
 <div align="center">
   <h2>🐍 My Contributions 🐍</h2>
   <br>
-  <img alt="snake eating my contributions" src="https://raw.githubusercontent.com/MrHur/MrHur/output/github-contribution-grid-snake.svg" />
+  <img alt="snake eating my contributions" src="https://raw.githubusercontent.com/MrHur/CloudJavaCourse/output/github-contribution-grid-snake.svg" />
   
   <br/><br/><br/>
 </div>
