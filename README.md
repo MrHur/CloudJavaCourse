@@ -1,12 +1,9 @@
+![header](https://capsule-render.vercel.app/api?type=venom&color=random&height=300&section=header&text=Greedy%20BackEnd&fontSize=90&fontColor=black&stroke=dea8ff&stroke-width=1)
 
 <h1 align="center">
-  <a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.herokuapp.com/?
-  font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=Hi+There!+👋;+I'm+Greedy!;" />
-  </a>
+    <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=Hi+There!+👋;+I'm+Pedro+Muniz!;" />
 </h1>
 
-![header](https://capsule-render.vercel.app/api?type=venom&color=random&height=300&section=header&text=Greedy%20BackEnd&fontSize=90&fontColor=black&stroke=dea8ff&stroke-width=1)
 ## Cloud Java Web Application Developer Course
 ---
 클라우드 기반의 자바 웹 어플리케이션 개발자 과정에 대한 repository 입니다.
