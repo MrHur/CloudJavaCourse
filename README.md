@@ -28,7 +28,7 @@ MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 �
 <br/>
 <div align="center">
     <img src="https://skillicons.dev/icons?i=react,bootstrap,html,css,vscode,github,git" />
-    <img src="https://skillicons.dev/icons?i=python,javascript,java,mysql,aws" /><br>
+    <img src="https://skillicons.dev/icons?i=python,javascript,java,mysql,aws,spring" /><br>
 </div>
 <br/>
 
