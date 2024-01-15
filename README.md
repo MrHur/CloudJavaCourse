@@ -1,6 +1,8 @@
 ![header](https://capsule-render.vercel.app/api?type=venom&color=random&height=300&section=header&text=Greedy%20BackEnd&fontSize=90&fontColor=black&stroke=dea8ff&stroke-width=1)
 
-
+<h1 align="center">
+    <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&color=dea8ff&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=Hi+There!+I'm+Greedy!👋;+I'm+Back-End-Developer+💻;" />
+</h1>
 
 ## Cloud Java Web Application Developer Course
 ---
@@ -8,6 +10,28 @@
 HTML5 / CSS3 / JavaScript 를 활용한 Front-End 개발 과정 (VSCode 사용)
 JAVA / Spring 을 사용한 Back-End 개발 과정(Eclipse 사용)
 MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 담을 예정입니다.
+
+---
+<br>
+<div align="center"> 
+  <a href="mailto:MrHur.Greedy92.ekzmemforhs3@gmail.com">
+    <img src="https://img.shields.io/badge/Gmail-333333?style=for-the-badge&logo=gmail&logoColor=red" />
+  </a>
+  <a href="https://MrHur.github.io" target="_blank">
+     <img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=todoist&logoColor=white" target="_blank" /> <!-- sqlite, safari, google-chrome are other good icon options -->
+  </a>
+</div>
+<br>
+
+***
+<h2 align="center">⚒️ Languages-Frameworks-Tools ⚒️</h2>
+<br/>
+<div align="center">
+    <img src="https://skillicons.dev/icons?i=react,bootstrap,html,css,vscode,github,git" />
+    <img src="https://skillicons.dev/icons?i=python,javascript,java,mysql,aws,spring" /><br>
+</div>
+<br/>
+
 
 ### Stack
 ![Static Badge](https://img.shields.io/badge/Java-%230769AD?style=for-the-badge&logo=CoffeeScript&logoColor=white&labelColor=0769AD)
