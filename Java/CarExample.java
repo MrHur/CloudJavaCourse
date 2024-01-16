@@ -1,22 +1,23 @@
-package sec04.exam;
+package sec06.exam.acess.package1;
 
 public class CarExample {
+
 	public static void main(String[] args) {
 		Car myCar = new Car();
 		
-		myCar.setGas(5);  //Car의 setGas() 메소드 호출
+		//잘못된 속도 변경
+		myCar.setSpeed(-50);
 		
-		boolean gasState = myCar.isLeftGas();  //Car의 setGas() 메소드 호출
-		if(gasState) {
-			System.out.println("출발합니다.");
-			myCar.run();  //Car의 run() 메소드 호출
+		System.out.println("현재 속도: " + myCar.getSpeed());
+		
+		//올바른 속도 변경
+		myCar.setSpeed(160);
+		
+		//멈춤
+		if(!myCar.isStop()) {
+			myCar.setStop(true);
 		}
 		
-		if(myCar.isLeftGas()) { //Car의 isLeftGas() 메소드 호출
-			System.out.println("gas를 주입할 필요가 없습니다.");
-		} else {
-			System.out.println("gas를 주입하세요.");
-		}
+		System.out.println("현재 속도: " + myCar.getSpeed());
 	}
 }
-
