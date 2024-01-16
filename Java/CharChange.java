@@ -11,7 +11,7 @@ public class CharChange {
 	}
 
 	public static void replace(char a[]) {
-		for (char i = 0; i < a.length; i++) {
+		for (int i = 0; i < a.length; i++) {
 			if (a[i] == (' ')) {
 				a[i] = (',');
 			} else {
@@ -21,7 +21,7 @@ public class CharChange {
 	}
 
 	public static void prt(char a[]) {
-		for (char i = 0; i < a.length; i++) {
+		for (int i = 0; i < a.length; i++) {
 			System.out.print(a[i]);
 		}
 		System.out.println();
