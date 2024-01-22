@@ -31,4 +31,23 @@ public class Buyer {
 
 		return;
 	}
+
+	void summary() {
+		String itemList = "";
+		int sum = 0;
+		for (int i = 0; i < cart.length; i++) {
+			if (cart[i] == null)
+				break;
+
+			itemList += cart[i] + ",";
+
+			sum += cart[i].price;
+		}
+
+		System.out.println("구입한 물건:" + itemList);
+		System.out.println("사용한 금액:" + sum);
+		System.out.println("보너스 포인트:" + bonusPoint);
+		System.out.println("남은 금액:" + money);
+	}
+
 }
