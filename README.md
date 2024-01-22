@@ -8,7 +8,7 @@
 ---
 
 
-<img src="https://github.com/MrHur/MrHur/assets/79696786/25b1e144-9f6d-445b-9733-0186202b2bba/" align="left" width="300" height="300" >
+<img src="https://github.com/MrHur/MrHur/assets/79696786/25b1e144-9f6d-445b-9733-0186202b2bba/" align="left" width="250" height="250" >
 　　　안녕하세요, 저는 백엔드 개발자 그리디입니다.
 <br>
 <br><br>
@@ -21,7 +21,7 @@
 <br>
 <br>
 　　　MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 담을 예정입니다.
-<br><br><br><br><br>
+<br><br><br>
 
 
 ---
