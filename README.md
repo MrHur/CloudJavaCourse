@@ -12,7 +12,8 @@
 　　　안녕하세요, 저는 백엔드 개발자 그리디입니다.
 <br>
 <br><br>
-　　　HTML5 / CSS3 / JavaScript 를 활용한 Front-End 개발 과정 (VSCode 사용)
+　　　HTML5 / CSS3 / JavaScript 를 활용한 Front-End 개발 과정
+<br> (VSCode 사용)
 <br>
 <br>
 <br>
@@ -20,7 +21,8 @@
 <br>
 <br>
 <br>
-　　　MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 담을 예정입니다.
+　　　MySQL/ AWS 등을 이용한 데이터베이스 및 
+<br> 웹 배포 과정을 주로 담을 예정입니다.
 <br><br><br><br><br>
 
 
