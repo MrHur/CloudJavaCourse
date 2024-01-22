@@ -6,10 +6,23 @@
 
 ## Cloud Java Web Application Developer Course
 ---
-클라우드 기반의 자바 웹 어플리케이션 개발자 과정에 대한 repository 입니다.
-HTML5 / CSS3 / JavaScript 를 활용한 Front-End 개발 과정 (VSCode 사용)
-JAVA / Spring 을 사용한 Back-End 개발 과정(Eclipse 사용)
-MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 담을 예정입니다.
+
+
+<img src="https://github.com/MrHur/MrHur/assets/79696786/25b1e144-9f6d-445b-9733-0186202b2bba/" align="left" width="300" height="300" >
+　　　안녕하세요, 저는 백엔드 개발자 그리디입니다.
+<br>
+<br><br>
+　　　HTML5 / CSS3 / JavaScript 를 활용한 Front-End 개발 과정 (VSCode 사용)
+<br>
+<br>
+<br>
+　　　JAVA / Spring 을 사용한 Back-End 개발 과정(Eclipse 사용)
+<br>
+<br>
+<br>
+　　　MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 담을 예정입니다.
+<br><br><br><br><br>
+
 
 ---
 <br>
@@ -19,6 +32,9 @@ MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 �
   </a>
   <a href="https://MrHur.github.io" target="_blank">
      <img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=todoist&logoColor=white" target="_blank" /> <!-- sqlite, safari, google-chrome are other good icon options -->
+  </a>
+  <a href="https://www.notion.so/greedy92/2023-12-11-2024-06-18-7fb8b16a2d8d42c295adf44207bb966b" target="_blank">
+     <img src="https://img.shields.io/badge/Notion-%23000000?style=for-the-badge&logo=Notion&logoColor=white&labelColor=%23000000" target="_blank" /> <!-- sqlite, safari, google-chrome are other good icon options -->
   </a>
 </div>
 <br>
@@ -49,7 +65,10 @@ MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 �
 ![Static Badge](https://img.shields.io/badge/Notion-%23000000?style=for-the-badge&logo=Notion&logoColor=white&labelColor=%23000000)
 ![Static Badge](https://img.shields.io/badge/Amazon%20AWS-%23232F3E?style=for-the-badge&logo=Amazon%20AWS&logoColor=white&labelColor=#232F3E)
 
+
 ---
+
+<img src="https://github.com/MrHur/MrHur/assets/79696786/f1f461c2-5509-4c42-adeb-7c4b4b4ed443/" align="right" width="300" height="300" >
 
 - Programming Language : Java 17
 - WEB : HTML5, CSS3, JavaScript 
@@ -58,13 +77,14 @@ MySQL/ AWS 등을 이용한 데이터베이스 및 웹 배포 과정을 주로 �
 - DataBase : MySQL
 - Deployment : AWS
 
+<br><br><br><br><br><br>
+
 ### Who am I ?
 ---
 BackEnd Developer Greedy입니다.
 
 [![Solved.ac Profile](http://mazassumnida.wtf/api/generate_badge?boj=okstreet)](https://solved.ac/MrHur/CodingTest)<br/>
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=MrHur&show_icons=true&theme=dracula)
-
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=MrHur&show_icons=true&theme=radical)
 
 
