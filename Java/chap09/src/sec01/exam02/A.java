@@ -1,29 +1,29 @@
 package sec01.exam02;
 
 public class A {
-	//ÀÎ½ºÅÏ½º ÇÊµå
+	//ì¸ìŠ¤í„´ìŠ¤ í•„ë“œ
 	B field1 = new B();               
 	C field2 = new C();               
 	
-	//ÀÎ½ºÅÏ½º ¸Ş¼Òµå
+	//ì¸ìŠ¤í„´ìŠ¤ ë©”ì†Œë“œ
 	void method1() {
 		B var1 = new B();
 		C var2 = new C();
 	}
 	
-	//Á¤Àû ÇÊµå ÃÊ±âÈ­
+	//ì •ì  í•„ë“œ ì´ˆê¸°í™”
 	//static B field3 = new B();
 	static C field4 = new C();
 	
-	//Á¤Àû ¸Ş¼Òµå
+	//ì •ì  ë©”ì†Œë“œ
 	static void method2() {
 		//B var1 = new B();
 		C var2 = new C();
 	}
 	
-	//ÀÎ½ºÅÏ½º ¸â¹ö Å¬·¡½º
+	//ì¸ìŠ¤í„´ìŠ¤ ë©¤ë²„ í´ë˜ìŠ¤
 	class B {}
-	//Á¤Àû ¸â¹ö Å¬·¡½º
+	//ì •ì  ë©¤ë²„ í´ë˜ìŠ¤
 	static class C {}	
 }
 

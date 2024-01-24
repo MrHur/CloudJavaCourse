@@ -1,21 +1,21 @@
 package sec01.exam01;
 
-/**¹Ù±ù Å¬·¡½º**/
+/**ë°”ê¹¥ í´ë˜ìŠ¤**/
 class A {
-	A() { System.out.println("A °´Ã¼°¡ »ı¼ºµÊ"); }
+	A() { System.out.println("A ê°ì²´ê°€ ìƒì„±ë¨"); }
 	
-	/**ÀÎ½ºÅÏ½º ¸â¹ö Å¬·¡½º**/
+	/**ì¸ìŠ¤í„´ìŠ¤ ë©¤ë²„ í´ë˜ìŠ¤**/
 	public class B {
-		B() { System.out.println("B °´Ã¼°¡ »ı¼ºµÊ"); }
+		B() { System.out.println("B ê°ì²´ê°€ ìƒì„±ë¨"); }
 		int field1;
 		//static int field2;
 		void method1() { }
 		//static void method2() { }
 	}
 	
-	/**Á¤Àû ¸â¹ö Å¬·¡½º**/
+	/**ì •ì  ë©¤ë²„ í´ë˜ìŠ¤**/
 	static class C {
-		C() { System.out.println("C °´Ã¼°¡ »ı¼ºµÊ"); }
+		C() { System.out.println("C ê°ì²´ê°€ ìƒì„±ë¨"); }
 		int field1;
 		static int field2;
 		void method1() { }
@@ -23,9 +23,9 @@ class A {
 	}
 	
 	void method() {
-		/**·ÎÄÃ Å¬·¡½º**/
+		/**ë¡œì»¬ í´ë˜ìŠ¤**/
 		class D {
-			D() { System.out.println("D °´Ã¼°¡ »ı¼ºµÊ"); }
+			D() { System.out.println("D ê°ì²´ê°€ ìƒì„±ë¨"); }
 			int field1;
 			//static int field2;
 			void method1() { }

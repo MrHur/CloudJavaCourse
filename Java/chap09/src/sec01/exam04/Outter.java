@@ -1,7 +1,7 @@
 package sec01.exam04;
 
 public class Outter {
-	//ÀÚ¹Ù7 ÀÌÀü
+	//ìë°”7 ì´ì „
 	public void method1(final int arg) {
 		final int localVariable = 1;
 		//arg = 100; (x)
@@ -13,7 +13,7 @@ public class Outter {
 		}
 	}
 	
-	//ÀÚ¹Ù8 ÀÌÈÄ
+	//ìë°”8 ì´í›„
 	public void method2(int arg) {
 		int localVariable = 1;
 		//arg = 100; (x)
