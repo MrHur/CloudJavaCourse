@@ -3,6 +3,6 @@ package sec01.exam06;
 public class MessageListener implements Button.OnClickListener {
 	@Override
 	public void onClick() {
-		System.out.println("¸Þ½ÃÁö¸¦ º¸³À´Ï´Ù.");
+		System.out.println("ë©”ì‹œì§€ë¥¼ ë³´ëƒ…ë‹ˆë‹¤.");
 	}
 }

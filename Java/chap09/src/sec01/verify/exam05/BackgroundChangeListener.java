@@ -3,6 +3,6 @@ package sec01.verify.exam05;
 public class BackgroundChangeListener implements CheckBox.OnSelectListener {
 	@Override
 	public void onSelect() {
-		System.out.println("¹è°æÀ» º¯°æÇÕ´Ï´Ù.");
+		System.out.println("ë°°ê²½ì„ ë³€ê²½í•©ë‹ˆë‹¤.");
 	}
 }
