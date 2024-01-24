@@ -25,12 +25,12 @@ public class View {
             System.out.println("담당 과목을 입력하세요.");
             String subject = Controller.sc.next();
             Member member = new Teacher(id, pw, name, subject);
-            Controller.addMember(member); // 변경된 부분
+            Controller.addMember(member);
         } else if (num == 2) {
             System.out.println("전공을 입력하세요.");
             String major = Controller.sc.next();
             Member member = new Student(id, pw, name, major);
-            Controller.addMember(member); // 변경된 부분
+            Controller.addMember(member);
 		} else {
 			System.out.println("잘못 입력하셨습니다.");
 			System.exit(0);

@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Controller {
 
 	static Scanner sc = new Scanner(System.in);
-	static Member[] members = new Member[50];
+	static Member[] members = new Member[10];
 	static int memberCount = 0;  // 추가된 회원 수를 추적하는 변수
 	boolean run = true;
 
