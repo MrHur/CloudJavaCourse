@@ -3,16 +3,16 @@ package sec02.verify.exam01;
 public class AnonymousExample {
 	public static void main(String[] args) {
 		Anonymous anony = new Anonymous();
-		//ÀÍ¸í °´Ã¼ ÇÊµå »ç¿ë
+		//ìµëª… ê°ì²´ í•„ë“œ ì‚¬ìš©
 		anony.field.start();
-		//ÀÍ¸í °´Ã¼ ·ÎÄÃº¯¼ö »ç¿ë
+		//ìµëª… ê°ì²´ ë¡œì»¬ë³€ìˆ˜ ì‚¬ìš©
 		anony.method1();
-		//ÀÍ¸í °´Ã¼ ¸Å°³°ª »ç¿ë
+		//ìµëª… ê°ì²´ ë§¤ê°œê°’ ì‚¬ìš©
 		anony.method2(
 			new Worker() {
 				@Override
 				public void start() {
-					System.out.println("Å×½ºÆ®¸¦ ÇÕ´Ï´Ù.");
+					System.out.println("í…ŒìŠ¤íŠ¸ë¥¼ í•©ë‹ˆë‹¤.");
 				}
 			}
 		);

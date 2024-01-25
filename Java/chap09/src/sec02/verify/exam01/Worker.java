@@ -2,6 +2,6 @@ package sec02.verify.exam01;
 
 public class Worker {
 	public void start() {
-		System.out.println("½¬°í ÀÖ½À´Ï´Ù.");
+		System.out.println("ì‰¬ê³  ìžˆìŠµë‹ˆë‹¤.");
 	}
 }

@@ -4,7 +4,7 @@ public class Anonymous {
 	Vehicle field = new Vehicle() {
 		@Override
 		public void run() {
-			System.out.println("ÀÚÀü°Å°¡ ´Ş¸³´Ï´Ù.");
+			System.out.println("ìì „ê±°ê°€ ë‹¬ë¦½ë‹ˆë‹¤.");
 		}
 	};
 
@@ -12,7 +12,7 @@ public class Anonymous {
 		Vehicle localVar = new Vehicle() {
 			@Override
 			public void run() {
-				System.out.println("½Â¿ëÂ÷°¡ ´Ş¸³´Ï´Ù.");
+				System.out.println("ìŠ¹ìš©ì°¨ê°€ ë‹¬ë¦½ë‹ˆë‹¤.");
 			}
 		};
 		localVar.run();

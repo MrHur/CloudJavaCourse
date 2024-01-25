@@ -4,7 +4,7 @@ public class Anonymous {
 	Worker field = new Worker() {
 		@Override
 		public void start() {
-			System.out.println("µğÀÚÀÎÀ» ÇÕ´Ï´Ù.");
+			System.out.println("ë””ìì¸ì„ í•©ë‹ˆë‹¤.");
 		}
 	};
 
@@ -12,7 +12,7 @@ public class Anonymous {
 		Worker localVar = new Worker() {
 			@Override
 			public void start() {
-				System.out.println("°³¹ßÀ» ÇÕ´Ï´Ù.");
+				System.out.println("ê°œë°œì„ í•©ë‹ˆë‹¤.");
 			}
 		};
 		localVar.start();
