@@ -3,20 +3,20 @@ package sec02.exam02;
 public class AnonymousExample {
 	public static void main(String[] args) {
 		Anonymous anony = new Anonymous();
-		//ÀÍ¸í °´Ã¼ ÇÊµå »ç¿ë
+		//ìµëª… ê°ì²´ í•„ë“œ ì‚¬ìš©
 		anony.field.turnOn();
-		//ÀÍ¸í °´Ã¼ ·ÎÄÃº¯¼ö »ç¿ë
+		//ìµëª… ê°ì²´ ë¡œì»¬ë³€ìˆ˜ ì‚¬ìš©
 		anony.method1();
-		//ÀÍ¸í °´Ã¼ ¸Å°³°ª »ç¿ë
+		//ìµëª… ê°ì²´ ë§¤ê°œê°’ ì‚¬ìš©
 		anony.method2(
 			new RemoteControl() {
 				@Override
 				public void turnOn() {
-					System.out.println("SmartTV¸¦ ÄÕ´Ï´Ù.");
+					System.out.println("SmartTVë¥¼ ì¼­ë‹ˆë‹¤.");
 				}
 				@Override
 				public void turnOff() {
-					System.out.println("SmartTV¸¦ ²ü´Ï´Ù.");
+					System.out.println("SmartTVë¥¼ ë•ë‹ˆë‹¤.");
 				}
 			}
 		);
