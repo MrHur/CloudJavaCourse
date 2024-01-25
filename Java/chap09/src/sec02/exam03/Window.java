@@ -4,22 +4,22 @@ public class Window {
 	Button button1 = new Button();
 	Button button2 = new Button();
 	
-	//ÇÊµå ÃÊ±â°ªÀ¸·Î ´ëÀÔ
+	//í•„ë“œ ì´ˆê¸°ê°’ìœ¼ë¡œ ëŒ€ì…
 	Button.OnClickListener listener = new Button.OnClickListener() {
 		@Override
 		public void onClick() {
-			System.out.println("ÀüÈ­¸¦ °Ì´Ï´Ù.");
+			System.out.println("ì „í™”ë¥¼ ê²ë‹ˆë‹¤.");
 		}
 	};
 	
 	Window() {
 		button1.setOnClickListener(listener);
 		
-		//¸Å°³°ªÀ¸·Î ´ëÀÔ
+		//ë§¤ê°œê°’ìœ¼ë¡œ ëŒ€ì…
 		button2.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick() {
-				System.out.println("¸Ş½ÃÁö¸¦ º¸³À´Ï´Ù.");
+				System.out.println("ë©”ì‹œì§€ë¥¼ ë³´ëƒ…ë‹ˆë‹¤.");
 			}
 		});
 	}
