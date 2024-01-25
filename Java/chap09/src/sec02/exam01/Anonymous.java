@@ -1,31 +1,31 @@
 package sec02.exam01;
 
 public class Anonymous {
-	//ÇÊµå ÃÊ±â°ªÀ¸·Î ´ëÀÔ
+	//í•„ë“œ ì´ˆê¸°ê°’ìœ¼ë¡œ ëŒ€ì…
 	Person field = new Person() {
 		void work() {
-			System.out.println("Ãâ±ÙÇÕ´Ï´Ù.");
+			System.out.println("ì¶œê·¼í•©ë‹ˆë‹¤.");
 		}
 		@Override
 		void wake() {
-			System.out.println("6½Ã¿¡ ÀÏ¾î³³´Ï´Ù.");
+			System.out.println("6ì‹œì— ì¼ì–´ë‚©ë‹ˆë‹¤.");
 			work();
 		}
 	};
 	
 	void method1() {
-		//·ÎÄÃº¯¼ö°ªÀ¸·Î ´ëÀÔ
+		//ë¡œì»¬ë³€ìˆ˜ê°’ìœ¼ë¡œ ëŒ€ì…
 		Person localVar = new Person() {
 			void walk() {
-				System.out.println("»êÃ¥ÇÕ´Ï´Ù.");
+				System.out.println("ì‚°ì±…í•©ë‹ˆë‹¤.");
 			}
 			@Override
 			void wake() {
-				System.out.println("7½Ã¿¡ ÀÏ¾î³³´Ï´Ù.");
+				System.out.println("7ì‹œì— ì¼ì–´ë‚©ë‹ˆë‹¤.");
 				walk();
 			}
 		};
-		//·ÎÄÃº¯¼ö »ç¿ë
+		//ë¡œì»¬ë³€ìˆ˜ ì‚¬ìš©
 		localVar.wake();
 	}
 	
@@ -33,14 +33,3 @@ public class Anonymous {
 		person.wake();
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
