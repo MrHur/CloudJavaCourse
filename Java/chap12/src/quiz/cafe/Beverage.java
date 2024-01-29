@@ -31,7 +31,7 @@ public abstract class Beverage {
 	}
 
 	public static void getSalesInfo(int order, String name, int price) {
-		System.out.println(order + "번째 판매 음료는 " + name + "이며, 가격은 " + price);
+		System.out.println(name);
 	}
 
 	public static void getTotalPrice() {
