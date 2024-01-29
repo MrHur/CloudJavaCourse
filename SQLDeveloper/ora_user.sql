@@ -1,0 +1,6 @@
+CREATE TABLE ex2_1 (
+    COLUMN1     CHAR(10),
+    COLUMN2     VARCHAR2(10),
+    COLUMN3     NVARCHAR2(10),
+    COLUMN4     NUMBER
+    );
