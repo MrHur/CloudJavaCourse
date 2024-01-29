@@ -30,10 +30,6 @@ public abstract class Beverage {
 		System.out.println(name);
 	}
 
-	public static void getSalesInfo(int order, String name, int price) {
-		System.out.println(name);
-	}
-
 	public static void getTotalPrice() {
 		System.out.println("총 판매 금액==>" + totalSales);
 		System.out.println("Coffee 판매 개수=>" + coffeeSales +"잔");

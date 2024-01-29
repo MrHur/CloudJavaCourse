@@ -63,8 +63,7 @@ public class CoffeeShop {
 
         // 음료의 가격을 설정하고 출력
         beverage.calcPrice();
-        beverage.getSalesInfo(orderList.size() + 1, beverage.getName(), beverage.getPrice());
-
+        beverage.print();
         // 음료 판매
         beverage.sell();
 

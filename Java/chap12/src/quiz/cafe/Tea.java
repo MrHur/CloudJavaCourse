@@ -5,7 +5,6 @@ public class Tea extends Beverage {
         super(name, 0); // 초기 가격을 0으로 설정
         calcPrice(); // calcPrice 호출하여 가격 설정
     }
-
     @Override
     public void calcPrice() {
         // Tea의 이름에 따라 가격을 설정
