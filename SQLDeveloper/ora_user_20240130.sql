@@ -260,3 +260,58 @@ SELECT index_name, index_type, table_name, uniqueness
   WHERE table_name = 'EX2_10';
   
   DROP INDEX EX2_10_IX02;
+  
+--시노님
+CREATE OR REPLACE SYNONYM syn_channel
+FOR channels;
+
+SELECT    COUNT(*)
+FROM    syn_channel;
+
+--ex_user
+SELECT    COUNT(*)
+FROM    ora_user.syn_channel;
+
+CREATE OR REPLACE PUBLIC SYNONYM syn_channel2
+FOR dept;
+
+GRANT SELECT ON syn_channel2 TO PUBLIC;
+
+--ora_user
+SELECT    COUNT(*)
+FROM    syn_channel2;
+
+DROP SYNONYM syn_channel;
+
+DROP PUBLIC SYNONYM syn_channel2;
+
+--시퀀스
+CREATE SEQUENCE my_seq1
+INCREMENT BY 1
+START WITH 1
+MINVALUE 1
+MAXVALUE 1000
+NOCYCLE
+NOCACHE;
+
+DELETE EX2_8;  --테이블 삭제가 아니고, 기존의 데이터를 삭제.
+
+INSERT INTO ex2_8 ( col1 ) VALUES ( my_seq1.NEXTVAL );
+
+SELECT my_seq1.CURRVAL
+FROM DUAL;
+SELECT my_seq1.NEXTVAL
+FROM DUAL;
+
+DROP SEQUENCE my_seq1;
+
+--quiz4
+CREATE SEQUENCE ORDERS_SEQ
+INCREMENT BY 1
+START WITH 1000
+MINVALUE 1
+MAXVALUE 9999
+NOCYCLE
+NOORDER
+NOCACHE;
+
