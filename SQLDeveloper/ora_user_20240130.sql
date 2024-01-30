@@ -54,7 +54,7 @@ CREATE TABLE ex2_7 (
     COL_UNIQUE_NULL     VARCHAR2(10) UNIQUE,
     COL_UNIQUE_NNULL    VARCHAR2(10) UNIQUE NOT null,
     col_unique          VARCHAR2(10),
-    constraints unique_nml UNIQUE(col_unique)
+    CONSTRAINT unique_nml UNIQUE(col_unique)
 );
 
 --constraint 제약
@@ -131,7 +131,7 @@ SELECT *
 FROM ex2_10;
 
 
-DEFAULT 제약 조건은 해당 열에 값을 지정하지 않을 때 자동으로 사용될 기본값을 정의합니다. 그러나 INSERT 문에서 직접 값을 명시할 경우 DEFAULT 제약 조건은 무시됩니다.
+--DEFAULT 제약 조건은 해당 열에 값을 지정하지 않을 때 자동으로 사용될 기본값을 정의합니다. 그러나 INSERT 문에서 직접 값을 명시할 경우 DEFAULT 제약 조건은 무시됩니다.
 
 --여기서 주의해야 할 부분은 col2에 대한 DEFAULT 제약 조건이 아닌, 
 --해당 열을 NULL로 지정했는데도 불구하고 INSERT INTO 문에서 col2에 값을 명시적으로 입력했기 때문입니다. 
@@ -161,15 +161,102 @@ DESC EX2_10;
 ALTER TABLE ex2_10 DROP COLUMN col3;
 DESC EX2_10;
 
-ALTER TABLE ex2_10 ADD CONSTRAINTS pk_ex2_10 PRIMARY KEY (col11);
+ALTER TABLE ex2_10 ADD CONSTRAINT pk_ex2_10 PRIMARY KEY (col11);
 
 SELECT constraint_name, constraint_type, table_name, search_condition
 FROM user_constraints
 WHERE table_name = 'EX2_10';
 
-ALTER TABLE ex2_10 DROP CONSTRAINTS pk_ex2_10;
+ALTER TABLE ex2_10 DROP CONSTRAINT pk_ex2_10;
 
 --테이블 복사
 CREATE TABLE ex2_9_1 AS
 SELECT *
 FROM EX2_9;
+
+CREATE TABLE ex2_10_1 AS
+SELECT col11
+FROM EX2_10;
+
+select *
+from ex2_10_1;
+--quiz1
+CREATE TABLE orders (
+    order_id     NUMBER(12, 0) PRIMARY KEY,
+    order_date   DATE,
+    order_mode   VARCHAR2(8 BYTE) CHECK ( order_mode IN ( 'direct', 'online' ) ),
+    customer_id  NUMBER(6, 0),
+    order_status NUMBER(2, 0),
+    order_total  NUMBER(8, 2) DEFAULT 0,
+    sales_rep_id NUMBER(6, 0),
+    promotion_id NUMBER(6, 0)
+);
+
+--quiz2
+--primary key 가 복수일 때,
+CREATE TABLE order_items (
+    order_id     NUMBER(12, 0),
+    line_item_id NUMBER(3, 0),
+    order_mode   VARCHAR2(8 BYTE),
+    product_id   NUMBER(3, 0),
+    unit_price   NUMBER(8, 2) DEFAULT 0,
+    quantity     NUMBER(8, 0) DEFAULT 0,
+    PRIMARY KEY (order_id, line_item_id)
+);
+--quiz3
+CREATE TABLE promotions (
+    PROMO_ID   NUMBER(6, 0),
+    PROMO_NAME VARCHAR2(20),
+    CONSTRAINT PK_PROMOTIONS PRIMARY KEY (PROMO_ID)
+);
+
+--CREATE TABLE HELLO (
+--    order_id     NUMBER(12, 0) PRIMARY KEY,
+--    line_item_id NUMBER(3, 0),
+--    order_mode   VARCHAR2(8 BYTE),
+--    product_id   NUMBER(3, 0) PRIMARY KEY,
+--    unit_price   NUMBER(8, 2) DEFAULT 0,
+--    quantity     NUMBER(8, 0) DEFAULT 0,
+--);
+
+SELECT a.employee_id, a.emp_name, a.department_id,
+       b.department_name   -- 부서명 컬럼
+  FROM employees a,
+       departments b
+ WHERE a.department_id = b.department_id;
+    
+CREATE OR REPLACE VIEW emp_dept_v1 AS
+SELECT a.employee_id, a.emp_name, a.department_id,
+       b.department_name   -- 부서명 컬럼
+  FROM employees a,
+       departments b
+ WHERE a.department_id = b.department_id;
+ 
+SELECT *
+  FROM emp_dept_v1;  
+
+
+--인덱스
+CREATE UNIQUE INDEX ex2_10_ix01
+ON ex2_10 (col11);
+
+SELECT index_name, index_type, table_name, uniqueness
+   FROM  user_indexes
+  WHERE table_name = 'EX2_10';
+  
+SELECT constraint_name, constraint_type, table_name, index_name
+FROM user_constraints
+WHERE table_name = 'JOB_HISTORY';
+
+SELECT index_name, index_type, table_name, uniqueness
+FROM user_indexes
+WHERE table_name = 'JOB_HISTORY';
+
+CREATE INDEX ex2_10_ix02
+ON ex2_10 (col11, col2);
+
+SELECT index_name, index_type, table_name, uniqueness
+   FROM  user_indexes
+  WHERE table_name = 'EX2_10';
+  
+  DROP INDEX EX2_10_IX02;
