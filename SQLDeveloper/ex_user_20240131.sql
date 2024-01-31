@@ -27,11 +27,11 @@ VALUES ('2', SYSDATE);
 CREATE TABLE EMP_COPY AS
 SELECT * FROM Employee;
 
---quiz 5
+--quiz 5 EMP_COPY 테이블에서
 --사원번호가 7788인 사원의 부서번호를 10으로 수정하세요.
 UPDATE employees
-SET department_id = 10
-WHERE employee_id = 7788;
+SET DNO= 10
+WHERE ENO = 7788;
 
 --quiz 6
 --Department 테이블의 구조와 내용을 복사하여 DEPT_COPY란 이름의 테이블을 만드세요.
