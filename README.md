@@ -32,7 +32,6 @@
 ---
 <br>
 
----
 <br>
 <div align="left"> 
   <a href="mailto:MrHur.Greedy92.ekzmemforhs3@gmail.com">
