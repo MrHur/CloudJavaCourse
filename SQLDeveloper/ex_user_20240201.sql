@@ -1,3 +1,4 @@
+--FILE_NAME : HJH_CHAP03_EX3
 --QUIZ1
 --덧셈연산을 이용하여 모든 사원에 대하여 $300의 급여 인상을 계산한 후 사원의 이름, 급여, 인상된 급여(salary_plus)를 출력하세요.
 SELECT ename, salary, (salary+300) AS salary_plus
@@ -88,3 +89,75 @@ AND salary  NOT IN (1600, 950, 1300);
 SELECT ename, salary, commission
 FROM employee
 WHERE commission >=500;
+
+--FILE_NAME : HJH_CHAP03_EX4
+--QUIZ1
+--20번 부서에 소속된 사원의 사원번호와 이름, 부서번호를 출력하는 뷰(v_em_dno)로 정의하시오.
+CREATE OR REPLACE VIEW v_em_dno AS
+SELECT eno, ename, dno
+FROM employee
+WHERE dno = 20;
+
+--QUIZ2
+--이미 생성된 뷰(v_em_dno)에 대해서 급여와 담당 업무 역시 출력할 수 있도록 수정하시오.
+CREATE OR REPLACE VIEW v_em_dno AS
+SELECT eno, ename, dno, salary, job
+FROM employee
+WHERE dno = 20;
+
+--QUIZ3
+--이미 생성된 뷰(v_em_dno)를 통해서 접근가능한 데이터만 입력 가능하도록 제약을 걸어 보시오.
+GRANT SELECT ON v_em_dno TO ex_user;
+
+COMMIT;
+--QUIZ4
+--다음 데이터를 뷰(v_em_dno)를 통해서 입력을 한 뒤 조회 해보시오.
+
+-- employee 테이블에 데이터 추가
+INSERT INTO employee (eno, ename, dno, salary, job)
+SELECT  5100, 'Belita', 10, 1500, 'CLERK' FROM DUAL
+UNION ALL
+SELECT  5200, 'Erica', 20, 2300, 'ANALYST' FROM DUAL
+UNION ALL
+SELECT 5300, 'Kali', 30, 1750, 'SALESMAN' FROM DUAL
+UNION ALL
+SELECT 5400, 'Mia', 20, 950, 'ANALYST' FROM DUAL
+UNION ALL
+SELECT 5500, 'Zinna', 10, 1050, 'CLERK' FROM DUAL;
+
+--생성된 모든 뷰를 조회하시오.
+SELECT * FROM v_em_dno;
+
+--QUIZ5
+--이미 생성된 뷰(v_em_dno)에 대해서 읽기 전용 속성(with check option/with read only는 동시 부여 불가능)을 부여해 보시오.
+CREATE OR REPLACE VIEW v_em_dno AS
+SELECT eno, ename, job, salary, dno
+FROM employee
+WHERE dno = 20
+WITH READ ONLY;
+
+--QUIZ6
+--사번, 사원이름, 부서번호와 부서 이름을 보여주는 뷰를(emp_dept) 생성하시오.
+CREATE OR REPLACE VIEW emp_dept AS
+SELECT e.eno, e.ename, e.dno, d.dname
+FROM employee e
+JOIN department d ON e.dno = d.dno;
+
+--QUIZ7
+--생성된 모든 뷰를 조회하시오.
+-- ex_user 스키마에서 v_em_dno 뷰 조회
+SELECT * FROM v_em_dno;
+
+-- ex_user 스키마에서 emp_dept 뷰 조회
+SELECT * FROM emp_dept;
+
+--QUIZ8
+--생성된 뷰(v_em_dno,emp_dept)를 제거하시오.
+
+-- v_em_dno 뷰 제거
+DROP VIEW v_em_dno;
+
+-- emp_dept 뷰 제거
+DROP VIEW emp_dept;
+
+
