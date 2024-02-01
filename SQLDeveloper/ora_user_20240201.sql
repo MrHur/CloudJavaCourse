@@ -80,3 +80,57 @@ FROM ex4_1;
 SELECT REPLACE('나는 너를 모르는데 너는 나를 알겠는가?', '나', '너') AS rep,
 TRANSLATE('나는 너를 모르는데 너는 나를 알겠는가?', '나는', '너를') AS trn
 FROM DUAL;
+
+-- 생략시 , '만약', 1, 1 과 같다.
+SELECT INSTR('내가 만약 외로울 때면, 내가 만약 괴로울 때면, 내가 만약 즐거울 때면', '만약') AS INSTR1,
+     INSTR('내가 만약 외로울 때면, 내가 만약 괴로울 때면, 내가 만약 즐거울 때면', '만약', 5) AS INSTR2,
+      INSTR('내가 만약 외로울 때면, 내가 만약 괴로울 때면, 내가 만약 즐거울 때면', '만약', 5, 2) AS INSTR3
+FROM DUAL;
+
+SELECT LENGTH('대한민국'),
+      LENGTHB('대한민국')
+FROM DUAL;
+
+--날짜 함수
+SELECT SYSDATE, SYSTIMESTAMP
+FROM DUAL;
+
+SELECT ADD_MONTHS(SYSDATE, 1), ADD_MONTHS(SYSDATE, -1)
+FROM DUAL;
+
+SELECT MONTHS_BETWEEN(SYSDATE, ADD_MONTHS(SYSDATE, 1)) mon1,
+    MONTHS_BETWEEN(ADD_MONTHS(SYSDATE, 1), SYSDATE) mon2
+FROM DUAL;
+
+SELECT LAST_DAY(SYSDATE)
+FROM DUAL;
+
+SELECT SYSDATE, ROUND(SYSDATE, 'month'), TRUNC(SYSDATE, 'month')
+FROM DUAL;
+
+SELECT NEXT_DAY(SYSDATE, '금요일')
+FROM DUAL;
+
+SELECT NEXT_DAY(SYSDATE + 7, '금요일') AS next_friday
+FROM DUAL;
+SELECT NEXT_DAY(SYSDATE + 7, '목요일') AS next_thursday
+FROM DUAL;
+
+--변환함수
+SELECT TO_CHAR(123456789, '999,999,999')
+FROM DUAL;
+
+SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+FROM DUAL;
+
+SELECT TO_NUMBER('123456')
+FROM DUAL;
+
+SELECT TO_DATE('20540101', 'YYYY-MM-DD')
+FROM DUAL;
+
+SELECT TO_TIMESTAMP('20140101 13:44:50', 'YYYY-MM-DD HH24:MI:SS')
+FROM DUAL;
+
+SELECT NEXT_DAY(TO_DATE('20140101', 'YYYY-MM-DD'), '금요일')
+FROM DUAL;
