@@ -134,3 +134,25 @@ FROM DUAL;
 
 SELECT NEXT_DAY(TO_DATE('20140101', 'YYYY-MM-DD'), '금요일')
 FROM DUAL;
+
+--HJH_chap04_ex1
+--사원테이블(employees)에는 phone_number라는 컬럼에 사원의 전화번호가 ###.###.#### 형태로 저장되어 있다.
+--여기서 처음 3자리 숫자 대신 서울 지역번호인 (02)를 붙여 전화번호를 출력하도록 쿼리를 작성해 보자.
+SELECT '(' || '02' || ') ' || SUBSTR(phone_number, 4) AS seoul_phone_number
+FROM employees;
+
+
+--현재일자 기준으로 사원테이블의 입사일자(hire_date)를 참조해서 근속년수가 10년 이상인 사원을 다음과 같은 형태의 결과를 출력하도록 작성해보자.
+--(근속년수가 많은 사원순서대로 결과를 나오도록 하자)
+SELECT employee_id AS "사원번호",
+            emp_name AS "사원명",
+            hire_date AS "입사일자",
+        TRUNC(MONTHS_BETWEEN(SYSDATE, hire_date) / 12) AS "근속년수"
+FROM employees
+WHERE TRUNC(MONTHS_BETWEEN(SYSDATE, hire_date) / 12) >= 10
+ORDER BY 4 DESC;
+
+--고객 테이블(CUSTOMERS)에는 고객 전화번호(cust_main_phone_number) 컬럼이 있다. 
+--이 컬럼 값은 ###-###-#### 형태인데, '-' 대신 '/'로 바꿔 출력하는 쿼리를 작성해 보자
+SELECT REPLACE(cust_main_phone_number, '-', '/') AS modified_phone_number
+FROM CUSTOMERS;
