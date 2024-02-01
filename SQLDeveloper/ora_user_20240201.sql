@@ -22,5 +22,61 @@ FROM DUAL;
 
 SELECT MOD(19, 4), MOD(19.541, 4.2), MOD(11, 3) 
 FROM DUAL;
+
 SELECT REMAINDER(19, 4), REMAINDER(19.541, 4.2), REMAINDER(11, 3) 
+FROM DUAL;
+
+SELECT EXP(2), LN(2.713), LOG(10, 100) 
+FROM DUAL;
+
+--문자함수
+SELECT INITCAP('never say goodbye'), INITCAP('never6say*good가bye')
+FROM DUAL;
+
+SELECT LOWER('NEVER SAY GOODBYE')
+FROM DUAL;
+
+SELECT UPPER('never say goodbye')
+FROM DUAL;
+
+SELECT CONCAT('I Have', 'A Dream'), 'I Have' || 'A Dream'
+FROM DUAL;
+
+SELECT SUBSTR('ABCD EFG', 1, 4)
+FROM DUAL;
+
+SELECT SUBSTR('ABCDEFG', 1, 4), SUBSTR('ABCDEFG', -1, 4)
+FROM DUAL;
+
+SELECT SUBSTRB('ABCDEFG', 1, 4), SUBSTRB('가나다라맙소사', 1, 4)
+FROM DUAL;
+
+SELECT LTRIM('ABCDEFGABC','ABC'), LTRIM('가나다라','가')
+FROM DUAL;
+
+SELECT RTRIM('ABCDEFGABC','ABC'), RTRIM('가나다라','라')
+FROM DUAL;
+
+SELECT LPAD('111-1111',12, '(02)'), RPAD('111-1111',12,'(02)')
+FROM DUAL;
+
+CREATE TABLE ex4_1 (
+    phone_num VARCHAR2(30)
+);
+
+INSERT INTO ex4_1 VALUES ('111-1111');
+INSERT INTO ex4_1 VALUES ('222-2222');
+INSERT INTO ex4_1 VALUES ('333-3333');
+
+SELECT *
+FROM ex4_1;
+
+SELECT LPAD(phone_num, 12, '(02)')
+FROM ex4_1;
+
+SELECT RPAD(phone_num, 12, '(02)')
+FROM ex4_1;
+
+SELECT REPLACE('나는 너를 모르는데 너는 나를 알겠는가?', '나', '너') AS rep,
+TRANSLATE('나는 너를 모르는데 너는 나를 알겠는가?', '나는', '너를') AS trn
 FROM DUAL;
