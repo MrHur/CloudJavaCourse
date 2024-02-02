@@ -83,7 +83,7 @@ SELECT
     4, '40대', 
     5, '50대', 
     '기타'
-  ) AS GENERATION
+  ) AS "연령대"
 FROM CUSTOMERS;
 --5번 문제는 30~50대 까지만 표시했는데, 전 연령대를 표시하도록 쿼리를 작성하는데, 이번에는 DECODE 대신 CASE 표현식을 사용해보자.
 SELECT
@@ -107,3 +107,108 @@ SELECT
     ELSE '기타'
   END AS age_group
 FROM CUSTOMERS;
+
+--집계함수
+SELECT COUNT(*)
+FROM employees;
+
+--매개변수로 입력된 항목에 null 값은 제외
+SELECT COUNT(department_id)
+FROM employees;
+
+SELECT COUNT(DISTINCT department_id)
+FROM employees;
+
+
+SELECT DISTINCT department_id
+FROM employees
+ORDER BY 1;
+
+SELECT DISTINCT employee_id, department_id
+FROM employees
+ORDER BY 2, 1;
+
+--sum
+select sum(salary)
+from employees;
+
+select sum(salary), sum(distinct salary)
+from employees;
+
+--avg
+select avg(salary), avg(distinct salary)
+from employees;
+
+--min / max
+select min(salary), max(salary)
+from employees;
+
+--variance stddev
+select variance(salary), stddev(salary)
+from employees;
+
+--group by 와 having 절
+select department_id, sum(salary), avg(salary)
+from employees
+group by department_id
+order by department_id;
+
+select department_id, emp_name
+from employees
+where department_id =10;
+
+select *
+from kor_loan_status;
+
+select period, region, sum(loan_jan_amt) totl_jan
+from kor_loan_status
+where period LIKE '2013%'
+GROUP BY period, region
+ORDER BY period, region;
+
+select period, region, sum(loan_jan_amt) totl_jan
+from kor_loan_status
+where period = '201311'
+GROUP BY period, region
+ORDER BY region;
+
+select period, region, sum(loan_jan_amt) totl_jan
+from kor_loan_status
+where period = '201311'
+GROUP BY period, region
+having sum(loan_jan_amt) > 100000
+ORDER BY region;
+
+select period, gubun, sum(loan_jan_amt) totl_jan
+from kor_loan_status
+where period LIKE '2013%'
+GROUP BY period, gubun
+ORDER BY period;
+
+select period, gubun, sum(loan_jan_amt) totl_jan
+from kor_loan_status
+where period LIKE '2013%'
+GROUP BY rollup(period, gubun)
+ORDER BY period;
+
+select period, gubun, sum(loan_jan_amt) totl_jan
+from kor_loan_status
+where period LIKE '2013%'
+GROUP BY period, rollup(gubun)
+ORDER BY period;
+
+select period, gubun, sum(loan_jan_amt) totl_jan
+from kor_loan_status
+where period LIKE '2013%'
+GROUP BY rollup(period), gubun
+ORDER BY period;
+
+select period, gubun, sum(loan_jan_amt) totl_jan
+from kor_loan_status
+where period LIKE '2013%'
+GROUP BY CUBE(period, gubun);
+
+select period, gubun, sum(loan_jan_amt) totl_jan
+from kor_loan_status
+where period LIKE '2013%'
+GROUP BY period,  CUBE(gubun);
