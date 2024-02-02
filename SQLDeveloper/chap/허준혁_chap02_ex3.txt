@@ -1,0 +1,33 @@
+--chap02_ex3
+--quiz1
+--아래 표를 사용해서 테이블을 만드세요. (emp01)
+CREATE TABLE EMP01 (
+    empno NUMBER(4),
+    ename VARCHAR2(10),
+    hiredate DATE
+);
+--quiz2
+--사원번호(enpno)를 시퀀스로부터 발급받아서, 왼쪽 테이블에 데이터를 입력하세요.
+--1) 사원이름: John, 입사일: sysdate
+--2) 사원이름:Tom, 입사일: sysdate
+
+-- 시퀀스 생성
+CREATE SEQUENCE empno_seq
+START WITH 1
+INCREMENT BY 1
+MAXVALUE 100000
+NOCACHE
+NOCYCLE;
+
+-- 데이터 입력
+INSERT INTO EMP01 (empno, ename, hiredate)
+VALUES (emp_seq.NEXTVAL, 'John', SYSDATE);
+
+INSERT INTO EMP01 (empno, ename, hiredate)
+VALUES (emp_seq.NEXTVAL, 'Tom', SYSDATE);
+
+--quiz3
+--EMP01테이블의 이름 칼럼을 인덱스로 설정하되 인덱스 이름을 
+--IDX_EMP01_EName으로 지정하세요.
+CREATE INDEX IDX_EMP01_EName
+ON EMP01 (ename);
