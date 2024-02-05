@@ -1,3 +1,5 @@
+--집합 연산자
+
 CREATE TABLE exp_goods_asia (
     country VARCHAR2(10),
     seq     NUMBER,
@@ -63,3 +65,59 @@ INTERSECT
 SELECT goods
   FROM exp_goods_asia
 WHERE country = '일본';
+
+--차집합 데이터 표시
+SELECT goods
+  FROM exp_goods_asia
+WHERE country = '한국'
+MINUS
+SELECT goods
+  FROM exp_goods_asia
+WHERE country = '일본';
+
+SELECT goods
+  FROM exp_goods_asia
+WHERE country = '일본'
+MINUS
+SELECT goods
+  FROM exp_goods_asia
+WHERE country = '한국';
+
+-- 이전에 goods 만 비교했을 경우에는, 5개의 데이터가 제외 되었는데, seq, goods를 같이 조회했을때는 2개만 제외되었다.
+-- UNION으로 조회할 경우 2조건을 모두 만족하는 중복만 제거 됨. 
+SELECT seq, goods
+  FROM exp_goods_asia
+WHERE country = '한국'
+UNION
+SELECT seq, goods
+  FROM exp_goods_asia
+WHERE country = '일본';
+
+SELECT seq, goods
+  FROM exp_goods_asia
+WHERE country = '한국'
+INTERSECT
+SELECT seq, goods
+  FROM exp_goods_asia
+WHERE country = '일본';
+
+SELECT seq, goods
+  FROM exp_goods_asia
+WHERE country = '한국'
+UNION
+SELECT seq, goods
+  FROM exp_goods_asia
+WHERE country = '일본'
+ORDER BY goods;
+
+--GROUPING SETS
+SELECT period, gubun, SUM(loan_jan_amt) totl_jan
+  FROM kor_loan_status
+WHERE period LIKE '2013%'
+GROUP BY GROUPING SETS(period, gubun);
+
+SELECT period, gubun, SUM(loan_jan_amt) totl_jan
+  FROM kor_loan_status
+WHERE period LIKE '2013%'
+    AND region IN('서울', '경기')
+GROUP BY GROUPING SETS(period, (gubun, region));
