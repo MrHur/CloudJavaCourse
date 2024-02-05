@@ -29,7 +29,7 @@ GROUP BY JOB;
 
 --관리자의 수를 나열하세요. 칼럼의 별칭은 COUNT(MANAGER)로 출력하세요.
 SELECT 
-  COUNT(MANAGER) AS "COUNT(MANAGER)"
+  COUNT(DISTINCT(MANAGER)) AS "COUNT(MANAGER)"
 FROM EMPLOYEE;
 
 --급여 최고액, 급여 최저액의 차액을 출력하세요.
@@ -48,7 +48,6 @@ FROM EMPLOYEE
 WHERE MANAGER IS NOT NULL AND SALARY >= 2000
 GROUP BY JOB
 ORDER BY Minimum_Salary DESC;
-
 
 --각 부서에 대해 부서번호, 사원수, 부서내의 모든 사원의 평균급여를 출력하시오.
 --칼럼의 별칭은 부서번호(DNO), 사원수(Number of People), 평균급여(Salary)로 지정하고,
@@ -73,14 +72,28 @@ LEFT JOIN EMPLOYEE E ON D.DNO = E.DNO
 GROUP BY D.DNO, D.DNAME, D.LOC
 ORDER BY DName;
 
+select dno, decode(dno ,10,'ACCOUNTING'
+                       ,20,'RESEARCH'
+                       ,30,'SALES'
+                       ,40,'OPERATIONS') as DName,
+                       decode (dno,10,'NEW YORK'
+                                  ,20,'DALLAS'
+                                  ,30,'CHICAGO'
+                                  ,40,'BOSTON') as Location
+                         ,count(*)as "Number of PeoPle",round(avg(salary)) as Salary
+  from employee
+ group by dno
+ order by dno;
+                        
+
 --업무를 표시한 다음 해당 업무에 대해 부서번호 별 급여 및 부서 10, 20, 30의 급여 총액을 각각 출력하시오.
 --칼럼의 별칭은 각각 job, 부서10, 부서20, 부서30, 총액으로 지정하세요.
 SELECT
-  JOB AS JOB,
+  JOB AS JOB, DNO,
   SUM(DECODE(DNO, 10, SALARY, 0)) AS "부서10",
   SUM(DECODE(DNO, 20, SALARY, 0)) AS "부서20",
   SUM(DECODE(DNO, 30, SALARY, 0)) AS "부서30",
   SUM(SALARY) AS "총액"
 FROM EMPLOYEE
-GROUP BY JOB
+GROUP BY DNO, ROLLUP(JOB)
 ORDER BY JOB;
