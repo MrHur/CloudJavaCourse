@@ -1,29 +1,3 @@
---HJH_chap06_ex1
---101번 사원에 대해 아래의 결과를 산출하는 쿼리를 작성해 보자.
-SELECT a.EMPLOYEE_ID 사번, a.EMP_NAME 사원명, d.JOB_title job명칭, b.start_DATE job시작일자, b.end_date job종료일자 , c.department_name job수행부서명
-FROM EMPLOYEES a,
-    job_history b,
-    departments c,
-    jobs d
-WHERE a.employee_id = b.employee_id
-and b.department_id = c.department_id
-and b.job_id = d.job_id
-and a.employee_id = 101;
-
---아래의 쿼리를 수행하면 오류가 발생한다. 오류의 원인은 무엇인가?
-SELECT a.employee_id, a.emp_name, b.job_id, b.department_id
-FROM employees a,
-     job_history b
-WHERE a.employee_id = b.employee_id(+)
-AND a.department_id(+) = b.department_id;
---두 개의 테이블을 outer-join할 수 없습니다
-
-SELECT a.employee_id, a.emp_name, b.job_id, b.department_id
-FROM employees a
-LEFT JOIN job_history b
-ON a.employee_id = b.employee_id 
-AND a.department_id = b.department_id;
-
 --서브쿼리
 --연관성 없는 서브쿼리
 
@@ -173,6 +147,82 @@ SELECT a.*
             AND c.COUNTRY_NAME = 'Italy'       
        ) b -- 연간 매출액
  WHERE a.month_avg > b.year_avg ;
+
+--HJH_chap06_ex1
+--101번 사원에 대해 아래의 결과를 산출하는 쿼리를 작성해 보자.
+SELECT a.EMPLOYEE_ID 사번, a.EMP_NAME 사원명, d.JOB_title job명칭, b.start_DATE job시작일자, b.end_date job종료일자 , c.department_name job수행부서명
+FROM EMPLOYEES a,
+    job_history b,
+    departments c,
+    jobs d
+WHERE a.employee_id = b.employee_id
+and b.department_id = c.department_id
+and b.job_id = d.job_id
+and a.employee_id = 101;
+
+--아래의 쿼리를 수행하면 오류가 발생한다. 오류의 원인은 무엇인가?
+
+SELECT a.employee_id, a.emp_name, b.job_id, b.department_id
+FROM employees a
+LEFT JOIN job_history b
+ON a.employee_id = b.employee_id 
+AND a.department_id = b.department_id;
+
+--다음 쿼리를 ANSI 문법으로 변경해 보자.
+SELECT a.department_id, a.department_name
+FROM departments a, employees b
+WHERE a.department_id = b.department_id
+AND b.salary > 3000
+ORDER BY a.department_name;
+
+SELECT a.department_id, a.department_name
+FROM departments a
+JOIN employees b ON a.department_id = b.department_id
+WHERE b.salary > 3000
+ORDER BY a.department_name;
+--다음은 연관성이 있는 서브쿼리이다. 이를 연관성 없는 서브쿼리로 변환해 보자.
+SELECT a.department_id, a.department_name
+FROM departments a
+WHERE EXISTS (SELECT 1
+                FROM job_history b
+                WHERE a.department_id = b.department_id );
+
+SELECT a.department_id, a.department_name
+FROM departments a
+WHERE a.department_id IN (SELECT b.department_id
+                         FROM job_history b);
+                         
+--연도별 이태리 최대매출액과 사원을 작성화는 쿼리를 학습했다. 이 쿼리를 기준으로 최대 매출액 뿐만 아니라
+-- 최소 매출액과 해당 사원을 조회하는 쿼리를 작성해 보자.
+WITH ItalySales AS (
+    SELECT
+        TO_CHAR(SALES_DATE, 'YYYY') AS SALES_YEAR,
+        AMOUNT_SOLD,
+        EMPLOYEE_ID,
+        RANK() OVER (PARTITION BY TO_CHAR(SALES_DATE, 'YYYY') ORDER BY AMOUNT_SOLD DESC) AS SALES_RANK
+    FROM
+        SALES s
+        JOIN CUSTOMERS c ON s.CUST_ID = c.CUST_ID
+        JOIN COUNTRIES co ON c.COUNTRY_ID = co.COUNTRY_ID
+    WHERE
+        co.COUNTRY_NAME = 'Italy'
+)
+SELECT
+    SALES_YEAR,
+    MAX(AMOUNT_SOLD) AS MAX_SALES_AMOUNT,
+    MIN(AMOUNT_SOLD) AS MIN_SALES_AMOUNT,
+    MAX(CASE WHEN SALES_RANK = 1 THEN EMPLOYEE_ID END) AS TOP_SALES_EMPLOYEE,
+    MAX(CASE WHEN SALES_RANK = (SELECT COUNT(DISTINCT EMPLOYEE_ID) FROM ItalySales) THEN EMPLOYEE_ID END) AS MIN_SALES_EMPLOYEE
+FROM
+    ItalySales
+GROUP BY
+    SALES_YEAR;
+
+
+
+
+
+
 
 
 -- 현장 노하우
