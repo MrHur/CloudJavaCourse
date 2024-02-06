@@ -218,11 +218,73 @@ FROM
 GROUP BY
     SALES_YEAR;
 
+-- 1. 이탈리아의 연도별, 사원별, 매출액 계산
+SELECT SUBSTR(a.sales_month, 1, 4) as years,
+        a.employee_id, 
+        SUM(a.amount_sold) AS amount_sold
+   FROM sales a,
+        customers b,
+        countries c
+  WHERE a.cust_id = b.CUST_ID
+    AND b.country_id = c.COUNTRY_ID
+    AND c.country_name = 'Italy'     
+  GROUP BY SUBSTR(a.sales_month, 1, 4), a.employee_id
+  order by years;     
 
-
-
-
-
+--2. 연도별 최대, 최소 매출액 추출
+SELECT  years, 
+         MAX(amount_sold) AS max_sold,
+         MIN(amount_sold) AS min_sold
+  FROM ( SELECT SUBSTR(a.sales_month, 1, 4) as years,
+                a.employee_id, 
+                SUM(a.amount_sold) AS amount_sold
+           FROM sales a,
+                customers b,
+                countries c
+          WHERE a.cust_id = b.CUST_ID
+            AND b.country_id = c.COUNTRY_ID
+            AND c.country_name = 'Italy'     
+          GROUP BY SUBSTR(a.sales_month, 1, 4), a.employee_id    
+       )
+  GROUP BY years; 
+-- 3. 1과 2의 결과를 조인해서 최대 매출을 일으킨 사원을 추출하고 사원테이블을 조인해서 사원이름을 추출 
+SELECT emp.years, 
+       emp.employee_id,
+       emp2.emp_name,
+       emp.amount_sold
+  FROM ( SELECT SUBSTR(a.sales_month, 1, 4) as years,
+                a.employee_id, 
+                SUM(a.amount_sold) AS amount_sold
+           FROM sales a,
+                customers b,
+                countries c
+          WHERE a.cust_id = b.CUST_ID
+            AND b.country_id = c.COUNTRY_ID
+            AND c.country_name = 'Italy'     
+          GROUP BY SUBSTR(a.sales_month, 1, 4), a.employee_id   
+        ) emp,
+       ( SELECT  years, 
+                 MAX(amount_sold) AS max_sold,
+                 MIN(amount_sold) AS min_sold
+          FROM ( SELECT SUBSTR(a.sales_month, 1, 4) as years,
+                        a.employee_id, 
+                        SUM(a.amount_sold) AS amount_sold
+                   FROM sales a,
+                        customers b,
+                        countries c
+                  WHERE a.cust_id = b.CUST_ID
+                    AND b.country_id = c.COUNTRY_ID
+                    AND c.country_name = 'Italy'     
+                  GROUP BY SUBSTR(a.sales_month, 1, 4), a.employee_id    
+               )
+          GROUP BY years
+       ) sale,
+       employees emp2 
+  WHERE emp.years = sale.years
+    AND (emp.amount_sold = sale.max_sold  OR emp.amount_sold = sale.min_sold)
+    AND emp.employee_id = emp2.employee_id
+  ORDER BY years;
+ 
 
 
 --연도별로 이탈리아 매출 데이터를 살펴 매출실적이 가장 많은 사원의 목록
@@ -325,3 +387,96 @@ SELECT emp.years,
     AND emp.amount_sold = sale.max_sold 
     AND emp.employee_id = emp2.employee_id
 ORDER BY years;
+
+
+-- WITH 절
+-- 연도별 최종월
+SELECT MAX(PERIOD) max_month
+  FROM kor_loan_status
+ GROUP BY SUBSTR(PERIOD, 1, 4);
+
+--월별, 지역별 대출잔액
+ SELECT period, region, sum(loan_jan_amt) jan_amt
+   FROM kor_loan_status 
+  GROUP BY period, region;
+  
+--연도별 최종월 대출잔액이 가장 큰 금액
+SELECT b.period,  MAX(b.jan_amt) max_jan_amt
+ FROM ( SELECT period, region, sum(loan_jan_amt) jan_amt
+              FROM kor_loan_status 
+             GROUP BY period, region
+           ) b,
+           ( SELECT MAX(PERIOD) max_month
+               FROM kor_loan_status
+              GROUP BY SUBSTR(PERIOD, 1, 4)
+           ) a
+WHERE b.period = a.max_month
+GROUP BY b.period;
+
+--연도별 최종월 기준 가장 대출이 많은 도시와 잔액 조회
+SELECT b2.*
+FROM ( SELECT period, region, sum(loan_jan_amt) jan_amt --중복 구문
+         FROM kor_loan_status 
+         GROUP BY period, region
+      ) b2,  
+       ( SELECT b.period,  MAX(b.jan_amt) max_jan_amt
+         FROM ( SELECT period, region, sum(loan_jan_amt) jan_amt  --중복 구문
+                  FROM kor_loan_status 
+                 GROUP BY period, region
+              ) b,
+              ( SELECT MAX(PERIOD) max_month
+                  FROM kor_loan_status
+                 GROUP BY SUBSTR(PERIOD, 1, 4)
+              ) a
+         WHERE b.period = a.max_month
+         GROUP BY b.period
+      ) c   
+ WHERE b2.period = c.period
+   AND b2.jan_amt = c.max_jan_amt
+ ORDER BY 1;
+ 
+--별첨지점
+WITH b2 AS ( SELECT period, region, sum(loan_jan_amt) jan_amt
+               FROM kor_loan_status 
+              GROUP BY period, region
+           ),
+     c AS ( SELECT b.period,  MAX(b.jan_amt) max_jan_amt
+              FROM ( SELECT period, region, sum(loan_jan_amt) jan_amt
+                      FROM kor_loan_status 
+                     GROUP BY period, region
+                   ) b,
+                   ( SELECT MAX(PERIOD) max_month
+                       FROM kor_loan_status
+                      GROUP BY SUBSTR(PERIOD, 1, 4)
+                   ) a
+             WHERE b.period = a.max_month
+             GROUP BY b.period
+           )
+--별첨사용
+SELECT b2.*
+  FROM b2, c
+ WHERE b2.period = c.period
+   AND b2.jan_amt = c.max_jan_amt
+ ORDER BY 1;           
+ 
+ 
+--WITH절 연습문제
+--sales 테이블에는 판매데이터, customers 테이블에는 고객정보가 있다.
+--2001년 12월 (SALES_MONTH = '200112') 판매데이터 중 현재일자를 기준으로
+--고객의 나이(customers.cust_year_of_birth)를 계산해서 다음과 같이 연령대별 매출금액을 보여주는 쿼리를 작성해보자.
+WITH basis AS ( SELECT WIDTH_BUCKET(to_char(sysdate, 'yyyy') - b.cust_year_of_birth, 10, 90, 8) AS old_seg,
+                       TO_CHAR(SYSDATE, 'yyyy') - b.cust_year_of_birth as olds,
+                       s.amount_sold
+                  FROM sales s, 
+                       customers b
+                 WHERE s.sales_month = '200112'
+                   AND s.cust_id = b.CUST_ID
+              ),
+     real_data AS ( SELECT old_seg * 10 || ' 대' AS old_segment,
+                           SUM(amount_sold) as old_seg_amt
+                      FROM basis
+                     GROUP BY old_seg
+              )
+ SELECT *
+ FROM real_data
+ ORDER BY old_segment;   
