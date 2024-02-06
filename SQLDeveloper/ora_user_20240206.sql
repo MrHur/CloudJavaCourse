@@ -39,39 +39,59 @@ WHERE department_id IN ( SELECT department_id
                                     WHERE parent_id IS NULL );
 SELECT count(*)
 FROM employees;
+
+SELECT
+    employee_id,
+    emp_name,
+    job_id
+FROM
+    employees
+WHERE
+    ( employee_id, job_id ) IN (
+        SELECT
+            employee_id, job_id
+        FROM
+            job_history
+    );
                           
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
+update employees
+set salary = (Select avg(salary)
+                from employees);
+                
+DELETE employees
+WHERE salary >= ( SELECT AVG(salary)
+        FROM employees );
+
+ROLLBACK;
+
+SELECT SALARY
+FROM EMPLOYEES;
+
+--연관성 있는 서브쿼리
+select a.department_id, a.department_name
+from departments a
+WHERE EXISTS( SELECT 1
+                        FROM job_history b
+                        where a.department_id = b.department_id );
+                        
+SELECT a.employee_id,
+            ( SELECT b.emp_name
+              FROM employees b
+              WHERE a.employee_id = b.employee_id ) AS emp_name,
+              a.department_id,
+              ( SELECT b.department_name
+                FROM departments b
+                WHERE a.department_id = b.department_id ) AS dep_name
+            FROM job_history a;
+
+SELECT
+    a.department_id,
+    a.department_name
+FROM
+    departments a         
+ WHERE EXISTS( SELECT 1
+                        FROM employees b
+                        where a.department_id = b.department_id
+                        AND b.salary > (SELECT AVG(SALARY)
+                        FROM EMPLOYEES)
+                        );   
