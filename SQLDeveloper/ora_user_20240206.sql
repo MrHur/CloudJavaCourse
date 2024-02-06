@@ -225,7 +225,8 @@ GROUP BY
 
 
 
--- 현장 노하우
+--연도별로 이탈리아 매출 데이터를 살펴 매출실적이 가장 많은 사원의 목록
+--1. 이탈리아의 연도별, 사원별, 매출액 계산
 SELECT SUBSTR(a.sales_month, 1, 4) as years,
         a.employee_id, 
         SUM(a.amount_sold) AS amount_sold
@@ -237,7 +238,7 @@ SELECT SUBSTR(a.sales_month, 1, 4) as years,
     AND c.country_name = 'Italy'     
 GROUP BY SUBSTR(a.sales_month, 1, 4), a.employee_id;
 
-
+--2. 연도별 최대 매출액 추출
 SELECT  years, 
         MAX(amount_sold) AS max_sold
  FROM ( SELECT SUBSTR(a.sales_month, 1, 4) as years,
@@ -254,7 +255,7 @@ SELECT  years,
  GROUP BY years
  ORDER BY years;
  
- 
+ --3. 1과 2의 결과를 조인해서 최대 매출을 일으킨 사원을 추출.
 SELECT emp.years, 
        emp.employee_id,
        emp.amount_sold
@@ -288,7 +289,7 @@ SELECT emp.years,
     AND emp.amount_sold = sale.max_sold 
   ORDER BY years;
 
-
+--4.  3결과와 사원테이블을 조인해서 사원 이름을 가져온다.
 SELECT emp.years, 
        emp.employee_id,
        emp2.emp_name,
