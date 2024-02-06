@@ -464,7 +464,8 @@ SELECT b2.*
 --sales 테이블에는 판매데이터, customers 테이블에는 고객정보가 있다.
 --2001년 12월 (SALES_MONTH = '200112') 판매데이터 중 현재일자를 기준으로
 --고객의 나이(customers.cust_year_of_birth)를 계산해서 다음과 같이 연령대별 매출금액을 보여주는 쿼리를 작성해보자.
-WITH basis AS ( SELECT WIDTH_BUCKET(to_char(sysdate, 'yyyy') - b.cust_year_of_birth, 10, 90, 8) AS old_seg,
+--M1)
+WITH age_sales AS ( SELECT WIDTH_BUCKET(to_char(sysdate, 'yyyy') - b.cust_year_of_birth, 10, 90, 8) AS old_seg,
                        TO_CHAR(SYSDATE, 'yyyy') - b.cust_year_of_birth as olds,
                        s.amount_sold
                   FROM sales s, 
@@ -472,11 +473,55 @@ WITH basis AS ( SELECT WIDTH_BUCKET(to_char(sysdate, 'yyyy') - b.cust_year_of_bi
                  WHERE s.sales_month = '200112'
                    AND s.cust_id = b.CUST_ID
               ),
-     real_data AS ( SELECT old_seg * 10 || ' 대' AS old_segment,
-                           SUM(amount_sold) as old_seg_amt
-                      FROM basis
+     real_sales AS ( SELECT old_seg * 10 || ' 대' AS 연령대,
+                           SUM(amount_sold) as 매출금액
+                      FROM age_sales
                      GROUP BY old_seg
               )
  SELECT *
- FROM real_data
- ORDER BY old_segment;   
+ FROM real_sales
+ ORDER BY 연령대;   
+ 
+ --M2)
+WITH age_sales AS (
+    SELECT 
+        TRUNC((SYSDATE - TO_DATE(c.CUST_YEAR_OF_BIRTH, 'YYYY')) / 365.25) AS age,
+        s.AMOUNT_SOLD
+    FROM 
+        customers c
+    INNER JOIN 
+        sales s ON c.CUST_ID = s.CUST_ID
+    WHERE 
+        s.SALES_MONTH = '200112'
+)
+SELECT 
+    CASE 
+        WHEN age BETWEEN 10 AND 19 THEN '10대'
+        WHEN age BETWEEN 20 AND 29 THEN '20대'
+        WHEN age BETWEEN 30 AND 39 THEN '30대'
+        WHEN age BETWEEN 40 AND 49 THEN '40대'
+        WHEN age BETWEEN 50 AND 59 THEN '50대'
+        WHEN age BETWEEN 60 AND 69 THEN '60대'
+        WHEN age BETWEEN 70 AND 79 THEN '70대'
+        WHEN age BETWEEN 80 AND 89 THEN '80대'
+        WHEN age BETWEEN 90 AND 99 THEN '90대'
+        ELSE '기타'
+    END AS age_group,
+    SUM(AMOUNT_SOLD) AS total_sales_amount
+FROM 
+    age_sales
+GROUP BY 
+    CASE 
+        WHEN age BETWEEN 10 AND 19 THEN '10대'
+        WHEN age BETWEEN 20 AND 29 THEN '20대'
+        WHEN age BETWEEN 30 AND 39 THEN '30대'
+        WHEN age BETWEEN 40 AND 49 THEN '40대'
+        WHEN age BETWEEN 50 AND 59 THEN '50대'
+        WHEN age BETWEEN 60 AND 69 THEN '60대'
+        WHEN age BETWEEN 70 AND 79 THEN '70대'
+        WHEN age BETWEEN 80 AND 89 THEN '80대'
+        WHEN age BETWEEN 90 AND 99 THEN '90대'
+        ELSE '기타'
+    END
+ORDER BY 
+    age_group;
