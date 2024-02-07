@@ -1,8 +1,12 @@
 --사원 번호가 7788인 사원과 담당업무가 같은 사원을 표시(사원이름과 담당업무)하세요.
 SELECT ENAME, JOB
 FROM EMPLOYEE
-WHERE ENO = 7788;
-
+WHERE JOB = (
+    SELECT JOB
+    FROM EMPLOYEE
+    WHERE ENO = 7788
+)
+AND ENO <> 7788;
 --사원번호가 7499인 사원보다 급여가 많은 사원을 표시(사원이름과 담당업무)하세요
 SELECT ENAME, JOB
 FROM EMPLOYEE
