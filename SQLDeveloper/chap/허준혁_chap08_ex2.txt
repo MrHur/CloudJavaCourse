@@ -1,0 +1,75 @@
+--HJH_chap08_ex2
+
+1번) IF문을 사용하여 KING 사원의 부서번호를 얻어와서, 부서 번호에 따른 부서명을 출력하세요.
+DECLARE
+    vn_department_id EMPLOYEE.DNO%TYPE;
+    vn_department_name DEPARTMENT.DNAME%TYPE;
+BEGIN
+    -- KING 사원의 부서 번호 얻기
+    SELECT DNO INTO vn_department_id
+    FROM EMPLOYEE
+    WHERE ENAME = 'KING';
+
+    -- 부서 번호에 따른 부서명 얻기
+    IF vn_department_id IS NOT NULL THEN
+        SELECT DNAME INTO vn_department_name
+        FROM DEPARTMENT
+        WHERE DNO = vn_department_id;
+
+        -- 부서명 출력
+        DBMS_OUTPUT.PUT_LINE('KING 사원의 부서명: ' || vn_department_name);
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('KING 사원의 부서 정보를 찾을 수 없습니다.');
+    END IF;
+END;
+/
+
+2번) BASIC LOOP문으로 1부터 10사이의 자연수의 합을 구하여 출력하세요.
+DECLARE
+vn_sum NUMBER := 0;
+vn_cnt NUMBER := 1;
+BEGIN
+
+LOOP
+
+    vn_sum := vn_sum + vn_cnt;
+  vn_cnt := vn_cnt + 1; -- vn_cnt 값을 1씩 증가
+
+  EXIT WHEN vn_cnt >11;  -- vn_cnt가 10보다 크면 루프 종료
+DBMS_OUTPUT.PUT_LINE ('1부터 10까지의 총합 = '  || vn_sum);
+END LOOP;
+
+END;
+
+3번) FOR LOOP문으로 1부터 10사이의 자연수의 합을 구하여 출력하세요.
+DECLARE
+    v_sum NUMBER := 0;
+    v_cnt NUMBER := 0;
+BEGIN
+    -- 반복문을 사용하여 cnt를 합산
+    FOR i IN 1..10 LOOP
+        v_cnt := i; -- 예시로 i를 cnt로 사용합니다.
+        v_sum := v_sum + v_cnt;
+    END LOOP;
+
+    -- 결과 출력
+    DBMS_OUTPUT.PUT_LINE('합산된 값: ' || v_sum);
+END;
+/
+
+4번) WHILE LOOP문으로 1부터 10사이의 자연수의 합을 구하여 출력하세요.
+DECLARE
+    v_sum NUMBER := 0;
+    v_cnt NUMBER := 1;
+BEGIN
+    -- 반복문을 사용하여 cnt를 합산
+    while v_cnt <=10
+    loop
+        v_sum := v_sum + v_cnt;
+        v_cnt := v_cnt +1;
+    END LOOP;
+
+    -- 결과 출력
+    DBMS_OUTPUT.PUT_LINE('합산된 값: ' || v_sum);
+END;
+/
