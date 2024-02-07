@@ -263,7 +263,6 @@ BEGIN
     
 END;
 
-
 -- WHILE 문
 DECLARE
    vn_base_num NUMBER := 3;
@@ -308,18 +307,25 @@ BEGIN
     
 END;
 
-
 DECLARE
    vn_base_num NUMBER := 3;
 BEGIN
-   
-   FOR i IN REVERSE 9..1
-   LOOP
+   FOR i IN REVERSE 1..9 LOOP
       DBMS_OUTPUT.PUT_LINE (vn_base_num || '*' || i || '= ' || vn_base_num * i);
-      
    END LOOP;
-    
 END;
+
+--이중 FOR 문을 이용한 구구단 출력
+DECLARE
+    vn_base_num NUMBER := 3;
+BEGIN
+    FOR i IN 1..9 LOOP
+        FOR j IN 1..9 LOOP
+            DBMS_OUTPUT.PUT_LINE (i || '*' || j || '= ' || i*j);
+        END LOOP;
+    END LOOP;
+END;
+
 
 -- CONTINUE 문
 DECLARE
