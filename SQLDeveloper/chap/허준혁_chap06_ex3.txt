@@ -40,11 +40,9 @@ HAVING
 5번) 각 부서의 최소급여를 받는 사원 이름,급여,부서번호를 표시하세요.
 SELECT ENAME, SALARY, DNO
 FROM EMPLOYEE
-WHERE (DNO, SALARY) IN (
-    SELECT DNO, MIN(SALARY)
-    FROM EMPLOYEE
-    GROUP BY DNO
-);
+WHERE (DNO, SALARY) IN (SELECT DNO, MIN(SALARY)
+                                  FROM EMPLOYEE
+                                  GROUP BY DNO);
 
 6번) 담당업무가 분석가(ANALYST)인 사원보다 급여가 적으면서 업무가 분석가(ANALYST)아닌 사원(사원번호, 이름, 담당업무,급여)들을 표시하세요.
 SELECT ENO, ENAME, JOB, SALARY
@@ -53,18 +51,29 @@ WHERE JOB <> 'ANALYST'
 AND SALARY < ANY (
     SELECT SALARY
     FROM EMPLOYEE
-    WHERE JOB = 'ANALYST'
-);
+    WHERE JOB = 'ANALYST');
 
 7번) 매니저 없는 사원의 이름을 표시하세요.
 SELECT ENAME 
 FROM EMPLOYEE
 WHERE MANAGER IS NULL;
 
+SELECT ENAME 
+FROM EMPLOYEE
+WHERE eno IN(SELECT ENO
+                     FROM EMPLOYEE
+                     WHERE MANAGER IS NULL);
+
 8번) 매니저 있는 사원의 이름을 표시하세요.
 SELECT ENAME 
 FROM EMPLOYEE
 WHERE MANAGER IS NOT NULL;
+
+SELECT ENAME 
+FROM EMPLOYEE
+WHERE eno IN(SELECT ENO
+                     FROM EMPLOYEE
+                     WHERE MANAGER IS NOT NULL);
 
 9번) BLAKE와 동일한 부서에 속한 사원의 이름과 입사일을 표시하는 질의를 작성하세요.(단 BLAKE는 제외)
 -- <> BLAKE
@@ -73,8 +82,7 @@ FROM EMPLOYEE
 WHERE DNO = (
     SELECT DNO
     FROM EMPLOYEE
-    WHERE ENAME = 'BLAKE'
-)
+    WHERE ENAME = 'BLAKE')
 AND ENAME <> 'BLAKE';
 
 10번) 급여가 평균보다 많은 사원들의 사원번호와 이름을 표시하되, 결과를 급여에 대한 오름차순으로 정렬하세요.
@@ -97,8 +105,7 @@ AND ENAME NOT LIKE '%K%';
 12번) 부서위치가 DALLAS인 사원의 이름과 부서번호 및 담당업무를 표시하세요.
 SELECT ENAME, DNO, JOB
 FROM EMPLOYEE 
-WHERE DNO IN (
-                        SELECT DNO 
+WHERE DNO IN (   SELECT DNO 
                         FROM DEPARTMENT
                         WHERE LOC = 'DALLAS');
                         
@@ -130,12 +137,12 @@ SELECT JOB, AVG(SALARY) AS AVG_SALARY
 FROM EMPLOYEE
 GROUP BY JOB
 HAVING AVG(SALARY) = (SELECT MIN(AVG_SALARY)
-                                    FROM (SELECT AVG(SALARY) AS AVG_SALARY
-                                              FROM EMPLOYEE
-                                              GROUP BY JOB) 
-);
+                                FROM (SELECT AVG(SALARY) AS AVG_SALARY
+                                          FROM EMPLOYEE
+                                          GROUP BY JOB));
 
 17번) 부하직원을 가진(manager) 사원의 사원번호와 이름을 출력하세요.
 SELECT ENO, ENAME
 FROM EMPLOYEE
-WHERE MANAGER IS NOT NULL;
+WHERE ENO IN(SELECT MANAGER
+                      FROM EMPLOYEE);
