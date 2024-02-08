@@ -382,3 +382,239 @@ BEGIN
 	DBMS_OUTPUT.PUT_LINE(emp_name);
 	
 END;
+
+
+--HJH_chap08_ex1
+
+--Quiz01. SQL 함수 중 INITCAP이란 함수가 있다. 이 함수는 매개변수로 전달한 문자열에서 앞글자만 대문자로 변환하는 함수이다. 
+--INITCAP과 똑같이 동작하는 my_initcap 이란 이름으로 함수를 만들어보자. (단 여기서는 공백 한 글자로 단어 사이를 구분한다고 가정한다)
+  
+  --공백문자 ' ',  매개변수 parameter
+  --대문자로 변환 UPPER
+  --입력받은 글자를 한 개씩 받아와서 / 공백을 받으면 STOP  -> LOOP  ' ' 이면 스탑?
+  --첫 번째 자리의 위치를 받아와야겠네? 
+  --index 이용
+/*
+CREATE OR REPLACE FUNCTION my_initcap (ps_string VARCHAR2)
+    RETURN VARCHAR2
+IS
+
+BEGIN
+END;
+*/
+
+CREATE OR REPLACE FUNCTION my_initcap(ps_string VARCHAR2)
+RETURN VARCHAR2
+IS
+    v_result VARCHAR2(4000);
+    v_length NUMBER;
+    v_idx NUMBER := 1;
+    v_next_is_upper BOOLEAN := TRUE; --공백 다음 문자는 대문자로 표시
+BEGIN
+    v_result := '';
+    v_length := LENGTH(ps_string);
+
+    WHILE v_idx <= v_length 
+    LOOP
+        IF SUBSTR(ps_string, v_idx, 1) = ' ' THEN
+            -- 현재 문자가 공백인 경우 다음 문자가 대문자로 시작해야 함을 표시
+            v_next_is_upper := TRUE;
+        ELSE
+            IF v_next_is_upper THEN
+                -- 다음 문자가 대문자로 시작해야 하는 경우
+                v_result := v_result || UPPER(SUBSTR(ps_string, v_idx, 1));
+                v_next_is_upper := FALSE;
+            ELSE
+                -- 다음 문자가 소문자인 경우
+                v_result := v_result || LOWER(SUBSTR(ps_string, v_idx, 1));
+            END IF;
+        END IF;
+
+        v_idx := v_idx + 1;
+    END LOOP;
+
+    RETURN v_result;
+END my_initcap;
+/
+
+SELECT my_initcap('hello, world!')
+FROM DUAL;
+
+--공백 어디갔지 ? ㅋㅋㅋㅋ
+
+--Quiz 2. 날짜형 SQL 함수 중에는 해당 월 마지막 일자를 반환하는 LAST_DAY란 함수가 있다.
+--매개변수로 문자형으로 일자를 받아, 해당 일자의 월 마지막 날짜를 문자형으로 반환하는 함수를 my_last_day란 이름으로 만들어 보자.
+
+--포인트 개념 
+--해당 월의 1일에서 -1일을 하면 전달의 마지막 날이 나옴.
+-- - INTERVAL '1' DAY 를 하면, 전 달의 마지막 날을 구할 수 있을듯. 
+
+
+CREATE OR REPLACE FUNCTION my_last_day(p_date_str VARCHAR2) 
+RETURN VARCHAR2
+IS
+    v_year NUMBER;
+    v_month NUMBER;
+    v_last_day NUMBER;
+    v_result VARCHAR2(10);
+BEGIN
+    -- 입력된 문자열을 날짜 형식으로 변환하여 연도와 월을 추출.
+    v_year := TO_NUMBER(SUBSTR(p_date_str, 1, 4));
+    v_month := TO_NUMBER(SUBSTR(p_date_str, 6, 2));
+    
+    -- 해당 월의 마지막 날짜 계산.
+    IF v_month = 12 THEN
+        v_last_day := 31; -- 12월인 경우 31일로 설정.
+    ELSE
+        -- 해당 월의 다음 달의 첫 번째 날의 하루 전이 해당 월의 마지막 날짜.
+        SELECT TO_NUMBER(TO_CHAR(TO_DATE('01-' || v_month || '-' || v_year, 'DD-MM-YYYY') - INTERVAL '1' DAY, 'DD'))
+        INTO v_last_day
+        FROM DUAL;
+    END IF;
+    
+    -- 결과 문자열 형식으로 변환.
+    v_result := TO_CHAR(TO_DATE(v_last_day || '-' || v_month || '-' || v_year, 'DD-MM-YYYY'), 'YYYY-MM-DD');
+    
+    RETURN v_result;
+END my_last_day;
+/
+
+--호출 1
+DECLARE
+    v_input_date VARCHAR2(10);
+    v_last_day VARCHAR2(10);
+BEGIN
+    -- 테스트를 위한 입력 일자 설정.
+    v_input_date := '2024-02-08';
+    
+    -- 함수 호출
+    v_last_day := my_last_day(v_input_date);
+    
+    -- 결과 출력
+    DBMS_OUTPUT.PUT_LINE('입력된 일자: ' || v_input_date);
+    DBMS_OUTPUT.PUT_LINE('해당 월의 마지막 날짜: ' || v_last_day);
+END;
+/
+
+--호출 2
+SELECT my_last_day('2024-02-08') AS 월_마지막_날짜
+FROM DUAL;
+
+
+--Quiz 3. 오른쪽의 프로시저는 이번 장에서 학습했던 my_new_job_proc 프로시저이다. 이 프로시저는 JOBS 테이블에 기존 데이터가 없으면 INSERT, 
+--있으면 UPDATE를 수행하는데 IF문을 사용해 구현하였다. IF문을 제거하고 동일한 로직을 처리하도록 MERGE문을 사용해 my_new_job_proc2 란 프로시저를 생성해 보자.
+
+/*
+CREATE OR REPLACE PROCEDURE my_new_job_proc
+( p_job_id IN JOBS.JOB_ID%TYPE,
+p_job_title IN JOBS.JOB_TITLE%TYPE,
+p_min_sal IN JOBS.MIN_SALARY%TYPE,
+p_max_sal IN JOBS.MAX_SALARY%TYPE )
+IS
+vn_cnt NUMBER := 0;
+BEGIN
+-- 동일한 job_id가 있는지 체크
+SELECT COUNT(*)
+INTO vn_cnt
+FROM JOBS
+WHERE job_id = p_job_id;
+-- 없으면 INSERT 
+IF vn_cnt = 0 THEN 
+INSERT INTO JOBS ( job_id, job_title, min_salary, max_salary, create_date, update_date)
+VALUES ( p_job_id, p_job_title, p_min_sal, p_max_sal, SYSDATE, SYSDATE);
+ELSE -- 있으면 UPDATE
+UPDATE JOBS
+SET job_title = p_job_title,
+min_salary = p_min_sal,
+max_salary = p_max_sal,
+update_date = SYSDATE
+WHERE job_id = p_job_id;
+END IF;
+COMMIT;
+END  
+*/
+
+/*
+머지? 문
+MERGE INTO 테이블 별칭
+USING 
+ON ( = ) 
+*/
+
+CREATE OR REPLACE PROCEDURE my_new_job_proc2
+( p_job_id IN JOBS.JOB_ID%TYPE,
+  p_job_title IN JOBS.JOB_TITLE%TYPE,
+  p_min_sal IN JOBS.MIN_SALARY%TYPE,
+  p_max_sal IN JOBS.MAX_SALARY%TYPE )
+IS
+BEGIN
+ MERGE INTO JOBS j
+  USING DUAL
+  ON (j.job_id = p_job_id)
+  WHEN MATCHED THEN
+    UPDATE SET
+      job_title = p_job_title,
+      min_salary = p_min_sal,
+      max_salary = p_max_sal,
+      update_date = SYSDATE
+  WHEN NOT MATCHED THEN
+    INSERT (job_id, job_title, min_salary, max_salary, create_date, update_date)
+    VALUES (p_job_id, p_job_title, p_min_sal, p_max_sal, SYSDATE, SYSDATE);
+  COMMIT;
+END;
+/
+--Quiz 4. 부서 테이블의 복사본 테이블을 다음과 같이 만들어보자.
+/*   CREATE TABLE ch09_departments AS
+SELECT DEPARTMENT_ID, DEPARTMENT_NAME, PARENT_ID
+FROM DEPARTMENTS;    */
+
+/* 위 테이블을 대상으로 다음과 같은 처리를 하는 프로시저를 my_dept_manage_proc 란 이름으로 만들어
+보자.
+(1) 매개변수 : 부서번호, 부서명, 상위부서번호, 동작 flag 
+(2) 동작 flag 매개변수 값은 'upsert' -> 데이터가 있으면 UPDATE, 아니면 INSERT
+'delete' -> 해당 부서 삭제
+(3) 삭제 시, 만약 해당 부서에 속한 사원이 존재하는지 사원테이블을 체크해 존재하면 경고메시지와 함께
+delete를 하지 않는다.   */
+
+CREATE OR REPLACE PROCEDURE my_dept_manage_proc 
+( p_department_id IN departments.DEPARTMENT_ID%TYPE,
+p_department_name IN departments.DEPARTMENT_NAME%TYPE
+p_parent_id IN departsments.PARENT_ID%TYPE,
+p_flag IN VARCHAR2)
+IS
+    v_count NUMBER;
+BEGIN
+    IF p_action_flag = 'upsert' THEN
+    BEGIN
+    --데이터가 있는지 확인
+    SELECT COUNT(*)
+    INTO v_count
+    FROM DEPARTMENTS
+    WHERE DEPARTMENT_ID = p.department_id;
+    --있으면, v_count 가 0 보다 큼 -> UPDATE ELSE INSERT
+    IF v_count > 0 THEN
+    --UPDATE
+    UPDATE DEPARTMENTS
+    SET DEPARTMENT_NAME = p.department_name,
+        PARANT_ID = p.parent_id
+    WHERE DEPARTMENT_ID = p.department_id;
+    
+    ELSE 
+    --INSERT
+    INSERT INTO DEPARTMENTS(DPARTMENTS_ID, DEPARTMENTS_NAME, PARENT_ID)
+    VALUES(p.department_id, p.department_name,p.parent_id);
+    END IF;
+    
+    COMMIT;
+    
+    END;
+   
+    ELSIF p_action_flag = 'delete' THEN
+    --DELETE
+        DELETE FROM DEPARTMENTS 
+        WHERE DEPARTMENT_ID = p.department_id
+        COMMIT;
+        END IF;
+
+END;
+/
