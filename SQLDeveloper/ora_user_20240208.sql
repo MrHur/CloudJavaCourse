@@ -576,45 +576,69 @@ FROM DEPARTMENTS;    */
 (3) 삭제 시, 만약 해당 부서에 속한 사원이 존재하는지 사원테이블을 체크해 존재하면 경고메시지와 함께
 delete를 하지 않는다.   */
 
-CREATE OR REPLACE PROCEDURE my_dept_manage_proc 
-( p_department_id IN departments.DEPARTMENT_ID%TYPE,
-p_department_name IN departments.DEPARTMENT_NAME%TYPE
-p_parent_id IN departsments.PARENT_ID%TYPE,
-p_flag IN VARCHAR2)
-IS
-    v_count NUMBER;
-BEGIN
-    IF p_action_flag = 'upsert' THEN
-    BEGIN
-    --데이터가 있는지 확인
-    SELECT COUNT(*)
-    INTO v_count
-    FROM DEPARTMENTS
-    WHERE DEPARTMENT_ID = p.department_id;
-    --있으면, v_count 가 0 보다 큼 -> UPDATE ELSE INSERT
-    IF v_count > 0 THEN
-    --UPDATE
-    UPDATE DEPARTMENTS
-    SET DEPARTMENT_NAME = p.department_name,
-        PARANT_ID = p.parent_id
-    WHERE DEPARTMENT_ID = p.department_id;
-    
-    ELSE 
-    --INSERT
-    INSERT INTO DEPARTMENTS(DPARTMENTS_ID, DEPARTMENTS_NAME, PARENT_ID)
-    VALUES(p.department_id, p.department_name,p.parent_id);
-    END IF;
-    
-    COMMIT;
-    
-    END;
-   
-    ELSIF p_action_flag = 'delete' THEN
-    --DELETE
-        DELETE FROM DEPARTMENTS 
-        WHERE DEPARTMENT_ID = p.department_id
-        COMMIT;
-        END IF;
 
-END;
-/
+   CREATE TABLE ch09_departments AS
+   SELECT DEPARTMENT_ID, DEPARTMENT_NAME, PARENT_ID
+     FROM DEPARTMENTS;
+
+CREATE OR REPLACE PROCEDURE my_dept_manage_proc
+          ( p_department_id    IN departments.DEPARTMENT_ID%TYPE,
+            p_department_name  IN departments.DEPARTMENT_NAME%TYPE,
+            p_parent_id        IN departments.PARENT_ID%TYPE,
+            p_flag             IN VARCHAR2 )
+IS
+  vn_cnt1 NUMBER := 0;
+  vn_cnt2 NUMBER := 0;
+BEGIN
+        -- INSERT나 UPDATE 할 경우, 동작 flag 매개변수가 소문자로 들어올 수 있으므로 대문자로 변환 후 비교함 
+        IF UPPER(p_flag) = 'UPSERT' THEN
+        
+              MERGE INTO ch09_departments a
+                USING ( SELECT p_department_id AS department_id
+                        FROM DUAL ) b
+                 ON ( a.department_id = b.department_id )
+               WHEN MATCHED THEN
+                 UPDATE SET a.department_name  = p_department_name, 
+                            a.parent_id        = p_parent_id
+               WHEN NOT MATCHED THEN 
+                 INSERT ( a.department_id, a.department_name, a.parent_id )
+                 VALUES ( p_department_id, p_department_name, p_parent_id );	
+                 
+          -- 삭제할 경우
+            ELSIF UPPER(p_flag) = 'DELETE' THEN       
+                -- 해당 부서가 있는지 체크
+               SELECT COUNT(*)
+                 INTO vn_cnt1
+                 FROM ch09_departments
+                WHERE department_id = p_department_id;
+                
+                -- 해당 부서가 없으면 메시지와 함께 프로시저 종료 
+               IF vn_cnt1 = 0 THEN
+                  DBMS_OUTPUT.PUT_LINE('해당 부서가 없어 삭제할 수 없습니다');
+                  RETURN;
+               END IF;
+               
+               -- 해당 부서에 속한 사원이 있는지 체크
+               SELECT COUNT(*)
+                 INTO vn_cnt2
+                 FROM employees
+                WHERE department_id = p_department_id;
+                
+                -- 해당 부서에 속한 사원이 있으면 메시지와 함께 프로시저 종료 
+               IF vn_cnt2 > 0 THEN
+                DBMS_OUTPUT.PUT_LINE('해당 부서에 속한 사원이 존재하므로 삭제할 수 없습니다');
+                  RETURN;	   	   
+               END IF;
+               
+               DELETE ch09_departments
+                WHERE department_id = p_department_id;
+
+        END IF;
+        COMMIT;
+
+END ;
+
+
+EXEC my_dept_manage_proc (280, 'vip배송부', 10, 'upsert');
+
+
