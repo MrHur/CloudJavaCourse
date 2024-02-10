@@ -23,12 +23,12 @@
 　　　MySQL/ AWS 등을 이용한 데이터베이스 및 
 <br>    웹 배포 과정을 주로 담을 예정입니다.
 <br><br><br><br><br>
-
+---
 
 
 <img src="https://github.com/MrHur/MrHur/blob/output/github-snake-dark.svg" width="100%">
 
----
+
 <br>
 
 <br>
