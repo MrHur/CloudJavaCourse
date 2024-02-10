@@ -5,12 +5,12 @@
 </h1>
 
 ## Cloud Java Web Application Developer Course
----
+
 
 <img src="https://github.com/MrHur/MrHur/assets/79696786/25b1e144-9f6d-445b-9733-0186202b2bba/" align="left" width="300" height="300" >
 　　　안녕하세요, 저는 백엔드 개발자 그리디입니다.
 <br>
-
+<br><br>
 　　　HTML5 / CSS3 / JavaScript 를 활용한 Front-End 개발 과정
 <br>    (VSCode 사용)
 <br>
