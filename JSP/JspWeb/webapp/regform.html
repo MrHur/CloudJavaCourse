@@ -2,7 +2,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
+<style>
+	h2 {
+		border-radius: 5px;
+		background-color: wheat;
+		text-align: center;
+		padding: 15px 0;
+	}
+	
+	#regform, #result {
+		padding: 15px 20px;
+		border-radius: 10px;
+		margin: auto;
+		width: 50%;
+		background-color: SandyBrown;
+	}
+</style>
+<script>
+function signUP() {
+	alert("정말로 가입하시겠습니까?");
+	document.getElememtById("regform").style.display = "none";
+	document.getElememtById("rname").innerHTML = document.form1.name.value;
+	document.getElememtById("remail").innerHTML = document.form1.email.value;
+	document.getElememtById("result").setAttribute("style","display: block; background-color:KhaKi");
+}
+</script>
 </head>
 <body>
 <!-- 주석 ctrl shift f 줄맞춤 -->
@@ -23,5 +48,8 @@
 		이름: <span id="rname"></span><br> 
 		이메일: <span id="remail"></span><br>
 	</div>
+	<script>
+		document.getElementById("result").style.display = "none";
+	</script>
 </body>
 </html>
