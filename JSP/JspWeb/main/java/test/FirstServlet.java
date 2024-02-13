@@ -1,6 +1,5 @@
 package test;
 
-<<<<<<< HEAD
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
@@ -17,10 +16,4 @@ public class FirstServlet extends HttpServlet {
 	public void service(ServletRequest request, ServletResponse response) {
 		System.out.println("service");
 	}
-=======
-import javax.servlet.http.HttpServlet;
-
-public class FirstServlet extends HttpServlet {
-
->>>>>>> refs/remotes/origin/main
 }
