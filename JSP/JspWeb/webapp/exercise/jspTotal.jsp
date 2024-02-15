@@ -26,9 +26,17 @@
 		<%=calc(10)%></h3>
 	<hr>
 	<h3>3. include: hello.jsp</h3>
+	<%@ include file="../Hello.jsp" %>
 	<hr>
 	<h3>4. 스크립트(배열 데이터 출력)</h3>
 	<ul>
+		<%
+			for (String name : members) {
+		%>
+			<li><%=name%></li>
+		<%
+			}
+		%>
 	</ul>
 </body>
 </html>
