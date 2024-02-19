@@ -5,12 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<script type="text/javascript" src="join.js"></script>
+<script type="text/javascript" src="join2.js"></script>
 <style>
     label {
         display: inline-block;
         width: 150px;
         text-align: left;
+    	content : "*";
     }
     input[type="text"],
     input[type="password"],
@@ -26,11 +27,15 @@
      {
     float: center;
     }
+        .required {
+        color: red;
+        margin-left: 3px;
+    }
 </style>
 </head>
 <body>
-    <form method="post" action="/JspWeb02/JoinServlet" name="joinForm" id="joinForm">
-        <label for="name">이름</label>
+    <form method="post" action="/JspWeb02/JoinServlet" name="frm" id="frm">
+        <label for="name">이름<span class="required">*</span></label>
         <input type="text" id="name" name="name" required><br>
         
         <!-- 주민등록번호 -->
