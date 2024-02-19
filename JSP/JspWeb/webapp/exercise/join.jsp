@@ -7,30 +7,38 @@
 <title>회원가입</title>
 <script type="text/javascript" src="join2.js"></script>
 <style>
-    label {
-        display: inline-block;
-        width: 150px;
-        text-align: left;
-    	content : "*";
-    }
-    input[type="text"],
-    input[type="password"],
-    select {
-        width: 170px;
-    }
-    select {
-    	width: 100px;
-    }
-    #int1 input, #mail1 input {
-    width: 60px;
-    }
-     {
-    float: center;
-    }
-        .required {
-        color: red;
-        margin-left: 3px;
-    }
+label {
+	display: inline-block;
+	width: 150px;
+	text-align: left;
+	content: "*";
+}
+
+input[type="text"], input[type="password"], select {
+	width: 170px;
+}
+
+select {
+	width: 100px;
+}
+
+#mail1 input,
+#int1 input {
+    width: initial;
+}
+.required {
+	color: red;
+	margin-left: 3px;
+}
+#submitbtn {
+    text-align: center; /* 가로 중앙 정렬 */
+}
+
+#submitbtn input {
+    display: inline-block; /* 인라인 블록 요소로 변경하여 같은 행에 위치 */
+    vertical-align: middle; /* 수직 정렬을 위해 가운데 정렬 설정 */
+    margin-right: 10px; /* 버튼 사이의 간격을 설정 */
+}
 </style>
 </head>
 <body>
@@ -39,19 +47,19 @@
         <input type="text" id="name" name="name" required><br>
         
         <!-- 주민등록번호 -->
-        <label for="residentNumber1">주민등록번호</label>
+        <label for="residentNumber1">주민등록번호<span class="required">*</span></label>
         <input type="text" id="residentNumber1" name="residentNumber1" required>
         -
         <input type="password" id="residentNumber2" name="residentNumber2" required><br>
         
         
-        <label for="userId">아이디</label>
+        <label for="userId">아이디<span class="required">*</span></label>
         <input type="text" id="userId" name="userId" required><br>
         
-        <label for="password">비밀번호</label>
+        <label for="password">비밀번호<span class="required">*</span></label>
         <input type="password" id="password" name="password" required><br>
         
-        <label for="confirmPassword">비밀번호 확인</label>
+        <label for="confirmPassword">비밀번호 확인<span class="required">*</span></label>
         <input type="password" id="confirmPassword" name="confirmPassword" required><br>
         
         <!-- 이메일 -->
@@ -87,27 +95,30 @@
         </select><br>
         
         <label id="mail1">메일/SMS 정보 수신</label>
-	        <input type="radio" id="receive" name="receive" value="수신" checked>
-	        <label for="receive">수신</label>
-	        <input type="radio" id="reject" name="receive" value="수신거부">
-	        <label for="reject">수신거부</label><br>
+	        <input type="radio" id="receive" name="receive" value="수신" checked>수신
+
+	        <input type="radio" id="reject" name="receive" value="수신거부">수신거부<br>
+
         
         <label for="interest" id="int1">관심분야</label>
-	        <input type="checkbox" id="interest1" name="interest" value="생두">
-	        <label for="interest1">생두</label>
-	        <input type="checkbox" id="interest2" name="interest" value="원두">
-	        <label for="interest2">원두</label>
-	        <input type="checkbox" id="interest3" name="interest" value="로스팅">
-	        <label for="interest3">로스팅</label>
-	        <input type="checkbox" id="interest4" name="interest" value="핸드드립">
-	        <label for="interest4">핸드드립</label>
-	        <input type="checkbox" id="interest5" name="interest" value="에스프레소">
-	        <label for="interest5">에스프레소</label>
-	        <input type="checkbox" id="interest6" name="interest" value="창업">
-	        <label for="interest6">창업</label><br>
-        
-        <input id="sub1" type="submit" value="회원가입" onclick="return checkJoin2()">
-        <input id="can1" type="reset" value="취소">
+	        <input type="checkbox" id="interest1" name="interest" value="생두">생두
+
+	        <input type="checkbox" id="interest2" name="interest" value="원두">원두
+
+	        <input type="checkbox" id="interest3" name="interest" value="로스팅">로스팅
+
+	        <input type="checkbox" id="interest4" name="interest" value="핸드드립">핸드드립
+
+	        <input type="checkbox" id="interest5" name="interest" value="에스프레소">에스프레소
+
+	        <input type="checkbox" id="interest6" name="interest" value="창업">창업<br>
+	        <br>
+	        
+
+<div id=submitbtn>
+	        <input id="sub1" type="submit" value="회원가입" onclick="return checkJoin2()">
+	        <input id="can1" type="reset" value="취소">
+</div>
     </form>
 </body>
 </html>
