@@ -18,5 +18,18 @@ ${"Hello"} <br>
 논리형 : ${true} <br>
 null : ${null} <br>
 
+\${5+2} : ${5+2} <br>
+\${5/2} : ${5/2} <br>
+\${5 mod 2} : ${5 mod 2} <br>
+\${5 > 2} : ${5 > 2} <br>
+\${2 gt 10} : ${2 gt 10} <br>
+\${(5 > 2) ? 5 : 2} : ${(5 > 2) ? 5 : 2 } <br>
+\${(5 > 2) || (2 < 10)} : ${(5 > 2) || (2 < 10)} <br>
+<br>
+<%
+String input=null;
+%>
+\${empty input} : ${empty input}<br>
+
 </body>
 </html>
