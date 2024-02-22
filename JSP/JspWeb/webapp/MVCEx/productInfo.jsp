@@ -1,20 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>»óÇ°Á¤º¸ Á¶È¸</title>
+<meta charset="UTF-8">
+<title>ìƒí’ˆì •ë³´ ì¡°íšŒ</title>
 </head>
 <body>
-	<h2>»óÇ°Á¤º¸ Á¶È¸</h2>
+	<h2>ìƒí’ˆì •ë³´ ì¡°íšŒ</h2>
 	<hr>
 	<ul>
-		<li>»óÇ°ÄÚµå: ${p:id}</li>
-		<li>»óÇ°¸í: ${p:name}</li>
-		<li>Á¦Á¶»ç: ${p:maker}</li>
-		<li>°¡°Ý: ${p:price}</li>
-		<li>µî·ÏÀÏ: ${p:date}</li>
+		<li>ìƒí’ˆì½”ë“œ: ${p.id}</li>
+		<li>ìƒí’ˆëª…: ${p.name}</li>
+		<li>ì œì¡°ì‚¬: ${p.maker}</li>
+		<li>ê°€ê²©: ${p.price}</li>
+		<li>ë“±ë¡ì¼: ${p.date}</li>
 	</ul>
 </body>
 </html>
