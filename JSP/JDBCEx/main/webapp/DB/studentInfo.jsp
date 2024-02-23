@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>학생 정보</title>
 </head>
 <body>
 	<h2>학생 정보</h2>
