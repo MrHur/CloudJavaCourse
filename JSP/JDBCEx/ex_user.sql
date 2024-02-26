@@ -20,4 +20,24 @@ values ('장길동','jang','1234','jang@naver.com','010-1234-5678', 0);
 INSERT INTO member
 values ('홍길동','hong','1234','hong@naver.com','010-1234-5678', 0);
 
-commit
+commit;
+
+DROP TABLE manager;
+
+CREATE TABLE manager(
+    name varchar2(10) primary key,
+    address varchar2(40),
+    phone char(13)
+);
+
+INSERT INTO manager
+values ('alice','suwon','010-1234-5678');
+INSERT INTO manager
+values ('duke','seoul','010-1234-5678');
+INSERT INTO manager
+values ('pororo','pusan','010-1234-5678');
+INSERT INTO manager
+values ('candy','daejeon','010-1234-5678');
+
+
+commit;
