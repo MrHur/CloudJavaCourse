@@ -1,23 +1,14 @@
-package ch05_pjt_01.contact.service;
+package ch05_pjt_03.contact.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ch05_pjt_01.contact.ContactSet;
-import ch05_pjt_01.contact.dao.ContactDao;
+import ch05_pjt_03.contact.ContactSet;
+import ch05_pjt_03.contact.dao.ContactDao;
 
 public class ContactRegisterService {
-//    @Autowired
+    @Autowired(required=false)
+    //@Qualifier("qualifierDao")
     private ContactDao contactDao;
-    
-	/*
-	 * public ContactRegisterService() { System.out.println("default constructor");
-	 * }
-	 * 
-	 * @Autowired public ContactRegisterService(ContactDao contactDao) {
-	 * System.out.println("contactDao: " + contactDao); // contactDao 출력
-	 * 
-	 * this.contactDao = contactDao; }
-	 */
 
     public void register(ContactSet contactSet) {
         String name = contactSet.getName();
@@ -33,9 +24,11 @@ public class ContactRegisterService {
         return contactSet == null ? true : false;
     }
 
-    @Autowired
-    public void setWordDao(ContactDao contactDao) {
-        this.contactDao = contactDao;
-    }
+	
+	 //@Resource
+	 public void setWordDao(ContactDao contactDao) {
+		 this.contactDao = contactDao; 
+	 }
+	 
 
 }
