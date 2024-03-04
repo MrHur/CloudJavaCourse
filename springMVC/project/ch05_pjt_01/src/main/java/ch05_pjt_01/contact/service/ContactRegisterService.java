@@ -1,12 +1,17 @@
 package ch05_pjt_01.contact.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import ch05_pjt_01.contact.ContactSet;
 import ch05_pjt_01.contact.dao.ContactDao;
 
 public class ContactRegisterService {
-
     private ContactDao contactDao;
     
+    public ContactRegisterService() {
+    	System.out.println("default constructor");
+    }
+    @Autowired
     public ContactRegisterService(ContactDao contactDao) {
 	System.out.println("contactDao: " + contactDao); 	// contactDao 출력
 
