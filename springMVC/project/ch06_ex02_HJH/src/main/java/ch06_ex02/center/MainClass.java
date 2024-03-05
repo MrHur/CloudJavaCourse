@@ -43,6 +43,9 @@ public class MainClass {
         
         System.out.println("중복 회원 등록 후");
         registerService.register(new Member("음화홧", "777777", "허준혁", "01012344321", "hello@naver.com", Member.nowDate(), "spring"));
+        registerService.register(new Member("고롸취", "141451", "허준혁", "01012344321", "hello@naver.com", Member.nowDate(), "spring"));
+        registerService.register(new Member("김억쥐", "141451", "허준혁", "01012344321", "hello@naver.com", Member.nowDate(), "spring"));
+        registerService.register(new Member("나빵빵", "141451", "허준혁", "01012344321", "hello@naver.com", Member.nowDate(), "spring"));
 
         MemberSelectService selectService = ctx.getBean("memberSelectService", MemberSelectService.class);
         Member selectedMember = selectService.select("음화홧");
