@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+ 	http://www.springframework.org/schema/beans/spring-beans.xsd
+ 	http://www.springframework.org/schema/context 
+ 	http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+    
+	<bean id="initSampleData"
+	class="ch06_ex01.center.utils.InitSampleData">
+		<property name="mIds">
+			<array>
+				<value>abc001</value>
+				<value>abc002</value>
+				<value>abc003</value>
+				<value>abc004</value>
+				<value>abc005</value>
+			</array>
+		</property>
+		
+		<property name="mPws">
+			<array>
+				<value>p0001</value>
+				<value>p0002</value>
+				<value>p0003</value>
+				<value>p0004</value>
+				<value>p0005</value>
+			</array>
+		</property>
+		<property name="mNames">
+			<array>
+				<value>agatha</value>
+				<value>barbara</value>
+				<value>chris</value>
+				<value>doris</value>
+				<value>elva</value>
+			</array>
+		</property>
+		<property name="mPhones">
+			<array>
+				<value>01012340001</value>
+				<value>01012340002</value>
+				<value>01012340003</value>
+				<value>01012340004</value>
+				<value>01012340005</value>
+			</array>
+		</property>
+		<property name="mMails">
+			<array>
+				<value>xxx@naver.com</value>
+				<value>xxx@naver.com</value>
+				<value>xxx@naver.com</value>
+				<value>xxx@naver.com</value>
+				<value>xxx@naver.com</value>
+			</array>
+		</property>
+		<!-- <property name="newDates">
+			<array>
+				<value>2023/12/05</value>
+				<value>2023/12/05</value>
+				<value>2023/12/05</value>
+				<value>2023/12/05</value>
+				<value>2023/12/05</value>
+			</array>
+		</property>
+		<property name="changeDates">
+			<array>
+				<value>2023/12/05</value>
+				<value>2023/12/05</value>
+				<value>2023/12/05</value>
+				<value>2023/12/05</value>
+				<value>2023/12/05</value>
+			</array>
+		</property> -->
+	</bean>
+
+	<bean id="memberDao"
+		class="ch06_ex01.center.member.dao.MemberDao" />
+
+	<bean id="memberRegisterService"
+		class="ch06_ex01.center.member.service.MemberRegisterService">
+		<constructor-arg ref="memberDao" /> 
+	</bean>
+
+	<bean id="memberModifyService"
+		class="ch06_ex01.center.member.service.MemberModifyService">
+	<constructor-arg ref="memberDao" />
+	</bean>
+
+	<bean id="memberDeleteService"
+		class="ch06_ex01.center.member.service.MemberDeleteService">
+	<constructor-arg ref="memberDao" />
+	</bean>
+
+	<bean id="memberSelectService"
+		class="ch06_ex01.center.member.service.MemberSelectService">
+	<constructor-arg ref="memberDao" />	
+	</bean>
+
+	<bean id="memberAllSelectService"
+		class="ch06_ex01.center.member.service.MemberAllSelectService">
+	<constructor-arg ref="memberDao" />	
+	</bean>
+
+	<bean id="printMemberInformationService" class="ch06_ex01.center.member.service.PrintMemberInformationService">
+	<constructor-arg ref="memberAllSelectService" />	
+	</bean>
+
+	<bean id="dev_DBConnectionInfoDev"
+		class="ch06_ex01.center.member.DBConnectionInfo">
+		<property name="url"
+			value="000.000.000.000" />
+		<property name="userId" value="admin" />
+		<property name="userPw" value="0000" />
+	</bean>
+
+	<bean id="real_DBConnectionInfo"
+		class="ch06_ex01.center.member.DBConnectionInfo">
+		<property name="url"
+			value="111.111.111.111" />
+		<property name="userId" value="master" />
+		<property name="userPw" value="1111" />
+	</bean>
+
+	<bean id="centerInformationService"
+		class="ch06_ex01.center.member.service.CenterInformationService">
+		<property name="info" value="Center Management System program was developed in 2022." />
+		<property name="copyRight" value="COPYRIGHT(C) 2022 CENTER CO., LTD. ALL RIGHT RESERVED. CONTACT MASTER FOR MORE INFORMATION." />
+		<property name="ver" value="The version is 1.0" />
+		<property name="sYear" value="2022" />
+		<property name="sMonth" value="3" />
+		<property name="sDay" value="1" />
+		<property name="eYear" value="2022" />
+		<property name="eMonth" value="4" />
+		<property name="eDay" value="30" />
+		<property name="developers">
+			<list>
+				<value>Cheney.</value>
+				<value>Eloy.</value>
+				<value>Jasper.</value>
+				<value>Dillon.</value>
+				<value>Kian.</value>
+			</list>
+		</property>
+		<property name="administrators">
+			<map>
+				<entry>
+					<key>
+						<value>Cheney</value>
+					</key>
+					<value>cheney@springPjt.org</value>
+				</entry>
+				<entry>
+					<key>
+						<value>Jasper</value>
+					</key>
+					<value>jasper@springPjt.org</value>
+				</entry>
+			</map>
+		</property>
+		<property name="dbInfos">
+			<map>
+				<entry>
+					<key>
+						<value>dev</value>
+					</key>
+					<ref bean="dev_DBConnectionInfoDev" />
+				</entry>
+				<entry>
+					<key>
+						<value>real</value>
+					</key>
+					<ref bean="real_DBConnectionInfo" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+</beans> 
