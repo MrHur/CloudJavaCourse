@@ -87,7 +87,9 @@ public class MemoRepositoryTests {
     public void testPageDefault() {
         // 1페이지, 10개씩
         Pageable pageable = PageRequest.of(0, 10);
-        Page<Memo> result = memoRepository.findAll(pageable);
+        //Page<Memo> result = memoRepository.findAll(pageable);
+        // @Query 사용
+        Page<Memo> result = memoRepository.getListWithQuery(10L, pageable);
         System.out.println(result);
 
         System.out.println("---------------------------------------");
