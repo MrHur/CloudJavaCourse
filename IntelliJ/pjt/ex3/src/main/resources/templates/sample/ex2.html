@@ -30,8 +30,15 @@
 <!--        <li th:each="dto, status : ${list}"-->
 <!--            th:text="${dto.sno % 5 == 0 } ? ${dto.sno}: ${dto.first}">-->
 <!--        </li>-->
-        <li th:each="dto, state : ${list}"
-            th:class="${dto.sno % 5 == 0}?'target'" th:text="${dto}">
+<!--        <li th:each="dto, state : ${list}"-->
+<!--            th:class="${dto.sno % 5 == 0}?'target'" th:text="${dto}">-->
+<!--        </li>-->
+
+<!--        <th:block th:each="dto, state : ${list}">-->
+<!--            <li th:text="${dto.sno % 5 == 0}?${dto.sno}:${dto.first}"></li>-->
+<!--        </th:block>-->
+        <li th:each="dto : ${list}">
+            [[${#numbers.formatInteger(dto.sno,5)}]]
         </li>
     </ul>
 </body>
