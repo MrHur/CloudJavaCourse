@@ -1,0 +1,64 @@
+PETFIT_테이블
+
+1. **회원 (Users)**
+    - UserID (PK)
+    - Username
+    - Password
+    - Email
+    - Phone
+    - Address
+    - UserType (회원 유형)
+    - 등급 또는 권한 (Admin, User 등)
+    - 등록일 (Registration Date)
+2. **병원 (Hospitals)**
+    - HospitalID (PK)
+    - HospitalName
+    - Address
+    - Phone
+    - 등록일 (Registration Date)
+3. **예약 (Reservations)**
+    - ReservationID (PK)
+    - UserID (users 테이블 FK)
+    - HospitalID (hospitals 테이블 FK)
+    - 반려동물id(pets테이블 FK)
+    - 예약 일자 (Reservation Date)
+    - 상태 (예약 상태: 예약 완료, 취소 등)
+    - 기타 필요한 정보 (예: 예약한 의사, 예약 시간 등)
+4. **게시글 (Posts)**
+    - PostID (PK)
+    - UserID (FK)
+    - 제목 (Title)
+    - 내용 (Content)
+    - 작성 일자 (Creation Date)
+    - 게시판 종류 (커뮤니티 게시판 등)
+5. **댓글 (Comments)**
+    - CommentID (PK)
+    - PostID (FK)
+    - UserID (FK)
+    - 내용 (Content)
+    - 작성 일자 (Creation Date)
+6. **멤버십(Memberships)**
+    - MembershipID (PK)
+    - UserID (FK)
+    - 등록일 (Registration Date)
+    - 상태 (구독 상태: 활성, 비활성 등)
+    - 결제 정보 (결제 일자, 결제 금액 등)
+7. **병원 업데이트 요청 (HospitalUpdateRequests)**
+    - RequestID (PK)
+    - HospitalID (FK)
+    - 요청 내용 (Update Content)
+    - 상태 (요청 상태: 처리 중, 완료 등)
+8. **고객센터 문의 (CustomerInquiries)**
+    - InquiryID (PK)
+    - UserID (FK)
+    - 제목 (Title)
+    - 내용 (Content)
+    - 문의 유형 (자주 묻는 질문, 1:1 문의 등)
+    - 상태 (답변 대기, 처리 완료 등)
+9. **반려동물(pets)**
+    - id (PK)
+    - 반려동물명
+    - 반려동물종류 (강아지, 고양이 등)
+    - 반려동물나이
+    - 반려동물성별
+    - 회원id (users 테이블 FK)

@@ -1,0 +1,73 @@
+PETFIT_테이블(2)
+
+1. **회원(Users)**
+    - UserID VARCHAR(20) PK
+    - Username VARCHAR(50) NOT NULL
+    - Password VARCHAR(100) NOT NULL
+    - Email VARCHAR(100) UNIQUE NOT NULL
+    - Phone VARCHAR(20)
+    - Address VARCHAR(200)
+    - UserType VARCHAR(20) NOT NULL
+    - UserRole VARCHAR(20) NOT NULL DEFAULT 'User'
+    - RegistrationDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+2. **병원(Hospitals)**
+    - HospitalID INT AUTO_INCREMENT PK
+    - HospitalName VARCHAR(100) NOT NULL
+    - Address VARCHAR(200) NOT NULL
+    - Phone VARCHAR(20)
+    - RegistrationDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+3. **예약(Reservations)**
+    - ReservationID INT AUTO_INCREMENT PK
+    - UserID VARCHAR(20) NOT NULL (Users.UserID FK)
+    - HospitalID INT NOT NULL (Hospitals.HospitalID FK)
+    - PetID INT NOT NULL (Pets.PetID FK)
+    - ReservationDate DATETIME NOT NULL
+    - Status VARCHAR(20) NOT NULL DEFAULT '예약완료'
+4. **게시글(Posts)**
+    - PostID INT AUTO_INCREMENT PK
+    - UserID VARCHAR(20) NOT NULL (Users.UserID FK)
+    - Title VARCHAR(200) NOT NULL
+    - Content TEXT NOT NULL
+    - CreationDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    - BoardType VARCHAR(50) NOT NULL
+5. **댓글(Comments)**
+    - CommentID INT AUTO_INCREMENT PK
+    - PostID INT NOT NULL (Posts.PostID FK)
+    - UserID VARCHAR(20) NOT NULL (Users.UserID FK)
+    - Content TEXT NOT NULL
+    - CreationDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+6. **멤버십(Memberships)**
+    - MembershipID INT AUTO_INCREMENT PK
+    - UserID VARCHAR(20) NOT NULL (Users.UserID FK)
+    - RegistrationDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    - Status VARCHAR(20) NOT NULL DEFAULT '활성'
+    - PaymentDate DATETIME
+    - PaymentAmount DECIMAL(10,2)
+7. **병원업데이트요청(HospitalUpdateRequests)**
+    - RequestID INT AUTO_INCREMENT PK
+    - HospitalID INT NOT NULL (Hospitals.HospitalID FK)
+    - UpdateContent TEXT NOT NULL
+    - Status VARCHAR(20) NOT NULL DEFAULT '처리중'
+8. **고객센터문의(CustomerInquiries)**
+    - InquiryID INT AUTO_INCREMENT PK
+    - UserID VARCHAR(20) NOT NULL (Users.UserID FK)
+    - Title VARCHAR(200) NOT NULL
+    - Content TEXT NOT NULL
+    - InquiryType VARCHAR(50) NOT NULL
+    - Status VARCHAR(20) NOT NULL DEFAULT '대기중'
+9. **반려동물(Pets)**
+    - PetID INT AUTO_INCREMENT PK
+    - PetName VARCHAR(50) NOT NULL
+    - PetType VARCHAR(50) NOT NULL
+    - PetAge INT
+    - PetGender VARCHAR(10)
+    - UserID VARCHAR(20) NOT NULL (Users.UserID FK)
+10. **환불(Refunds)**
+- RefundID INT AUTO_INCREMENT PK
+- UserID VARCHAR(20) NOT NULL (Users.UserID FK)
+- ReservationID INT (Reservations.ReservationID FK)
+- MembershipID INT (Memberships.MembershipID FK)
+- RefundAmount DECIMAL(10,2) NOT NULL
+- RefundReason TEXT
+- RefundDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+- Status VARCHAR(20) NOT NULL DEFAULT '환불요청'
