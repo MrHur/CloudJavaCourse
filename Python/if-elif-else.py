@@ -7,3 +7,6 @@ elif score >= 60: grade = 'D'       # 60 이상일 경우 D
 else: grade = 'F'                   # 모든 조건에 만족하지 못할 경우 F
 
 print(grade)
+
+
+
