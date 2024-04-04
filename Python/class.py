@@ -22,7 +22,7 @@ class SoccerPlayer(object):
 
 # 클래스-인스턴스
 player_objects = [SoccerPlayer(name, position, number) for name, position, number in zip(names, positions, numbers)]
-print(player_objects[0])
+print(player_objects[3])
 
 # SoccerPlayer를 사용하는 instance 코드
 jinhyun = SoccerPlayer("Jinhyun", "MF", 10)
