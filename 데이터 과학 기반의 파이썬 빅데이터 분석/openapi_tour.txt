@@ -1,0 +1,35 @@
+import datetime
+import time
+import json
+import pandas as pd
+
+ServiceKey="일반 인증키"
+
+#[CODE 1]
+def getRequestUrl(url):    
+    req = urllib.request.Request(url)    
+    try: 
+        response = urllib.request.urlopen(req)
+        if response.getcode() == 200:
+            print ("[%s] Url Request Success" % datetime.datetime.now())
+            return response.read().decode('utf-8')
+    except Exception as e:
+        print(e)
+        print("[%s] Error for URL : %s" % (datetime.datetime.now(), url))
+        return None
+
+#[CODE 2]
+def getTourismStatsItem(yyyymm, national_code, ed_cd):    
+    service_url = "http://openapi.tour.go.kr/openapi/service/EdrcntTourismStatsService/getEdrcntTourismStatsList"
+    parameters = "?_type=json&serviceKey=" + ServiceKey   #인증키
+    parameters += "&YM=" + yyyymm
+    parameters += "&NAT_CD=" + national_code
+    parameters += "&ED_CD=" + ed_cd
+    url = service_url + parameters
+    
+    retData = getRequestUrl(url)   #[CODE 1]
+    
+    if (retData == None):
+        return None
+    else:
+         return json.loads(retData)
