@@ -109,3 +109,22 @@ del df["2010-2015 증가율"]
 df
 #데이터프레임은 전치(transpose)를 포함하여 넘파이 2차원 배열이 가지는 대부분의 속성이나 메서드를 지원 -> 행과 열이 바뀜
 df.T
+df[0]
+df4 = pd.DataFrame([[89.2, 92.5, 90.8], [92.8, 89.9, 95.2]])
+df4[2]
+
+#데이터 슬라이싱
+
+df[:1]
+df[1:2]
+df["서울":"부산"]
+
+#개별 데이터 인덱싱
+df["2015"]["서울"]
+
+#csv파일 생성
+df.to_csv('C:/workspace/score.csv', header = 'False')
+
+#csv파일 로드
+df5 = pd.read_csv('C:/workspace/score.csv', encoding='utf-8', index_col=0, engine='python')
+df5
