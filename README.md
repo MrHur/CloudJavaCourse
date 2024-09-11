@@ -68,7 +68,6 @@
 ![Static Badge](https://img.shields.io/badge/JavaScript-%23F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white&labelColor=#F7DF1E)
 ![Static Badge](https://img.shields.io/badge/jQuery-%230769AD?style=for-the-badge&logo=JQuery&logoColor=white&labelColor=0769AD)
 
-<br>
 
 ![Static Badge](https://img.shields.io/badge/Eclipse%20IDE-%232C2255?style=for-the-badge&logo=Eclipse%20IDE&logoColor=white&labelColor=#2C2255)
 ![Static Badge](https://img.shields.io/badge/Spring-%236DB33F?style=for-the-badge&logo=Spring&logoColor=white&labelColor=#6DB33F)
@@ -76,7 +75,7 @@
 ![Static Badge](https://img.shields.io/badge/Notion-%23000000?style=for-the-badge&logo=Notion&logoColor=white&labelColor=%23000000)
 ![Amazon Badge](https://img.shields.io/badge/Amazon-F90?logo=amazon&logoColor=fff&style=for-the-badge)
 
-
+<br>
 
 ![Static Badge](https://img.shields.io/badge/Git-%23E34F26?style=for-the-badge&logo=Git&logoColor=white&labelColor=#E34F26)
 ![FileZilla Badge](https://img.shields.io/badge/FileZilla-BF0000?logo=filezilla&logoColor=fff&style=for-the-badge)
