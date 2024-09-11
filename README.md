@@ -76,7 +76,7 @@
 ![Static Badge](https://img.shields.io/badge/Notion-%23000000?style=for-the-badge&logo=Notion&logoColor=white&labelColor=%23000000)
 ![Amazon Badge](https://img.shields.io/badge/Amazon-F90?logo=amazon&logoColor=fff&style=for-the-badge)
 
-<br>
+
 
 ![Static Badge](https://img.shields.io/badge/Git-%23E34F26?style=for-the-badge&logo=Git&logoColor=white&labelColor=#E34F26)
 ![FileZilla Badge](https://img.shields.io/badge/FileZilla-BF0000?logo=filezilla&logoColor=fff&style=for-the-badge)
@@ -84,6 +84,9 @@
 ![Spring Security Badge](https://img.shields.io/badge/Spring%20Security-6DB33F?logo=springsecurity&logoColor=fff&style=for-the-badge)
 ![MariaDB Badge](https://img.shields.io/badge/MariaDB-003545?logo=mariadb&logoColor=fff&style=for-the-badge)
 ![Spring Boot Badge](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=fff&style=for-the-badge)
+
+<br>
+
 ---
 
 <img src="https://github.com/MrHur/MrHur/assets/79696786/f1f461c2-5509-4c42-adeb-7c4b4b4ed443/" align="right" width="300" height="300" >
